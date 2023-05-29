@@ -3,6 +3,7 @@ import type { HeadFC, PageProps } from "gatsby";
 import Layout from "../components/Layout";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import Card from "../components/Card";
 
 const pageStyles = {
   color: "#232129",
@@ -19,11 +20,10 @@ const IndexPage: React.FC<PageProps> = () => {
           <p>i'm the</p>
           <p>header</p>
         </Header>
-        <Header variant="game">
-          <p>hello</p>
-          <p>hi</p>
-          <p>szia</p>
-        </Header>
+        <Card />
+        <Card />
+        <Card />
+        <Card />
         <Footer>
           <p>I AM </p>
           <p>The</p>
