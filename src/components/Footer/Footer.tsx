@@ -7,7 +7,7 @@ export type FooterProps = {
 
 const Footer = ({ children }: FooterProps) => {
   return (
-    <div className="flex justify-between items-center container border-solid border-2 border-red-500 bg-red-500 text-white h-24">
+    <div className="flex justify-between items-center border-solid border-2 border-red-500 bg-red-500 text-white min-h-20 h-24">
       {children}
     </div>
   );

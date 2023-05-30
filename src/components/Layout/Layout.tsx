@@ -7,7 +7,7 @@ export type LayoutProps = {
 
 const Layout = ({ children }: LayoutProps) => {
   return (
-    <div className="flex flex-col container h-full justify-between">
+    <div className="flex flex-col h-full w-full justify-between">
       {children}
     </div>
   );

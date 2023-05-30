@@ -8,7 +8,7 @@ export type HeaderProps = {
 
 const Header = ({ children, variant }: HeaderProps) => {
   return (
-    <div className="flex justify-between items-center container border-solid border-2 bg-sky-500 text-white border-sky-500 h-24">
+    <div className="w-full flex justify-between items-center bg-sky-500 text-white min-h-20 h-24">
       {children}
     </div>
   );

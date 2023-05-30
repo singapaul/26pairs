@@ -4,6 +4,7 @@ import Layout from "../components/Layout";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Card from "../components/Card";
+import Gameboard from "../components/Gameboard/Gameboard";
 
 const pageStyles = {
   color: "#232129",
@@ -20,10 +21,60 @@ const IndexPage: React.FC<PageProps> = () => {
           <p>i'm the</p>
           <p>header</p>
         </Header>
-        <Card />
-        <Card />
-        <Card />
-        <Card />
+        <Gameboard>
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+        </Gameboard>
         <Footer>
           <p>I AM </p>
           <p>The</p>
