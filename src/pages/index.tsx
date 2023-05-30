@@ -5,6 +5,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Card from "../components/Card";
 import Gameboard from "../components/Gameboard/Gameboard";
+import Timer from "../components/Timer";
 
 const pageStyles = {
   color: "#232129",
@@ -17,9 +18,7 @@ const IndexPage: React.FC<PageProps> = () => {
     <main style={pageStyles}>
       <Layout>
         <Header variant="game">
-          <p>hello</p>
-          <p>i'm the</p>
-          <p>header</p>
+          <Timer />
         </Header>
         <Gameboard>
           <Card />
