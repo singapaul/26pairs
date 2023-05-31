@@ -2,9 +2,11 @@
 
 ## To do list
 
+- fix TS import issues
+- Implement imports with @
+- Add Favicon
 - Port over existing code
 - Header/Footer draw
-- Set up tailwind
 - Set up Tailwind theming: https://www.youtube.com/watch?v=MAtaT8BZEAo&ab_channel=TailwindLabs
 - Implement Toast interface and social share
 - set up PWA status
@@ -18,3 +20,7 @@
 - Google fonts/icons integration (see wordy)
 
 ## Done
+
+30/05
+
+- Created basic components structure

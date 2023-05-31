@@ -1,11 +1,6 @@
 import * as React from "react";
 import type { HeadFC, PageProps } from "gatsby";
-import Layout from "../components/Layout";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import Card from "../components/Card";
-import Gameboard from "../components/Gameboard/Gameboard";
-import Timer from "../components/Timer";
+import Game from "../components/Game";
 
 const pageStyles = {
   color: "#232129",
@@ -16,74 +11,11 @@ const pageStyles = {
 const IndexPage: React.FC<PageProps> = () => {
   return (
     <main style={pageStyles}>
-      <Layout>
-        <Header variant="game">
-          <Timer />
-        </Header>
-        <Gameboard>
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-        </Gameboard>
-        <Footer>
-          <p>I AM </p>
-          <p>The</p>
-          <p>Footer</p>
-        </Footer>
-      </Layout>
+      <Game />
     </main>
   );
 };
 
 export default IndexPage;
 
-export const Head: HeadFC = () => <title>Home Wage</title>;
+export const Head: HeadFC = () => <title>26 Pairs</title>;
