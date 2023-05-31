@@ -1,11 +1,18 @@
 import React from "react";
 
 export type TimerProps = {
-  moves?: number;
-  time?: number;
+  moves: number;
+  time: number;
 };
 
-const Timer = ({ moves = 12, time = 14 }: TimerProps) => {
+const Timer = ({ moves = 0, time = 0 }: TimerProps) => {
+  // Minutes calculation
+  const minutes = Math.floor((time % 360000) / 6000);
+  // Seconds calculation
+  const seconds = Math.floor((time % 6000) / 100);
+  // Milliseconds calculation
+  const milliseconds = time % 100;
+
   return (
     <div className="flex w-fit gap-6 justify-between bg-indigo-700 py-2 px-6 rounded-2xl">
       <div>
@@ -14,7 +21,11 @@ const Timer = ({ moves = 12, time = 14 }: TimerProps) => {
       </div>
       <div>
         <h2>Time</h2>
-        <p>{`00:00:${time}`}</p>
+        <p>
+          {minutes.toString().padStart(2, "0")}:
+          {seconds.toString().padStart(2, "0")}:
+          {milliseconds.toString().padStart(2, "0")}
+        </p>
       </div>
     </div>
   );

@@ -2,7 +2,7 @@ import React from "react";
 import { ReactNode } from "react";
 
 export type FooterProps = {
-  children: ReactNode;
+  children?: ReactNode;
 };
 
 const Footer = ({ children }: FooterProps) => {

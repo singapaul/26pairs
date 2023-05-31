@@ -48,13 +48,6 @@ const Game = ({ children }: GameProps) => {
     setTime(0);
   };
 
-  // Minutes calculation
-  const minutes = Math.floor((time % 360000) / 6000);
-  // Seconds calculation
-  const seconds = Math.floor((time % 6000) / 100);
-  // Milliseconds calculation
-  const milliseconds = time % 100;
-
   // @ts-ignore
   const checkIsInactive = (card) => {
     // @ts-ignore
@@ -159,7 +152,7 @@ const Game = ({ children }: GameProps) => {
   return (
     <Layout>
       <Header variant="game">
-        <Timer />
+        <Timer time={time} moves={moves} />
       </Header>
       <Gameboard>
         {cards.map((card: any, index: any) => {
@@ -176,11 +169,7 @@ const Game = ({ children }: GameProps) => {
           );
         })}
       </Gameboard>
-      <Footer>
-        <p>I AM </p>
-        <p>The</p>
-        <p>Footer</p>
-      </Footer>
+      <Footer />
     </Layout>
   );
 };
