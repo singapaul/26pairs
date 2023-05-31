@@ -151,7 +151,7 @@ const Game = ({ children }: GameProps) => {
 
   return (
     <Layout>
-      <Header variant="game">
+      <Header restart={handleRestart} variant="game">
         <Timer time={time} moves={moves} />
       </Header>
       <Gameboard>

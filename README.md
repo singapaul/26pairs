@@ -2,18 +2,22 @@
 
 ## To do list
 
+- Card reveal at start functionality
+- Deploy
+- Drop down menu
+- Implement Toast interface and social share
 - fix TS import issues
 - Implement imports with @
-- Add Favicon
-- Header/Footer draw
+- Finish header/footer
 - Set up Tailwind theming: https://www.youtube.com/watch?v=MAtaT8BZEAo&ab_channel=TailwindLabs
-- Implement Toast interface and social share
+
 - set up PWA status
 - Integrate dark mode
 - Contenful integration
 - Vercel Web Analytics// Google Analytics : https://vercel.com/analytics
 - Grid bottom alignment
-- Card reveal at start functionality
+- Set up 2-3 versions for card configs
+
 - Difficulty mode
 - Cross Browser support/testing
 - Google fonts/icons integration (see wordy)
@@ -27,3 +31,6 @@
 31/05
 
 - Port over existing code
+- Implement footer icons
+- Implement restart button
+- Add Favicon

@@ -33,6 +33,12 @@ const config: GatsbyConfig = {
       __key: "images",
     },
     {
+      resolve: "gatsby-plugin-manifest",
+      options: {
+        icon: "src/images/icon.png",
+      },
+    },
+    {
       resolve: "gatsby-omni-font-loader",
       options: {
         mode: "async",
