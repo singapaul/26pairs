@@ -5,7 +5,6 @@
 - fix TS import issues
 - Implement imports with @
 - Add Favicon
-- Port over existing code
 - Header/Footer draw
 - Set up Tailwind theming: https://www.youtube.com/watch?v=MAtaT8BZEAo&ab_channel=TailwindLabs
 - Implement Toast interface and social share
@@ -24,3 +23,7 @@
 30/05
 
 - Created basic components structure
+
+31/05
+
+- Port over existing code
