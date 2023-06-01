@@ -2,10 +2,10 @@
 
 ## To do list
 
-- Card reveal at start functionality
-- Deploy
 - Drop down menu
 - Implement Toast interface and social share
+- Card reveal at start functionality
+- Deploy
 - fix TS import issues
 - Implement imports with @
 - Finish header/footer

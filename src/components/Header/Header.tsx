@@ -16,12 +16,17 @@ const Header = ({ children, variant, restart }: HeaderProps) => {
         <img className="object-scale-down h-16 w-16 " src={logo} alt="Logo" />
       </div>
       {children}
-      <button
-        className="bg-red-500 p-3 border-4 border-black"
-        onClick={() => restart()}
-      >
-        Restart
-      </button>
+      <div className="flex gap-4">
+        <button className="bg-green-500 p-3 border-4 border-black">
+          DROPMENU
+        </button>
+        <button
+          className="bg-red-500 p-3 border-4 border-black"
+          onClick={() => restart()}
+        >
+          Restart
+        </button>
+      </div>
     </div>
   );
 };
