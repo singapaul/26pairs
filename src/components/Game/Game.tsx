@@ -11,6 +11,7 @@ import Layout from "../Layout";
 import { uniqueElementsArray } from "../../data/Simpsons";
 // @ts-ignore
 import { shuffle } from "../../utils/shuffle";
+import MenuOverlay from "../MenuOverlay";
 
 export type GameProps = {
   children?: ReactNode;
@@ -149,11 +150,21 @@ const Game = ({ children }: GameProps) => {
     setShouldDisableAllCards(false);
   };
 
+  // logic to handle open/close of the menu
+
+  const [navbarOpen, setNavbarOpen] = useState(false);
+
   return (
     <Layout>
-      <Header restart={handleRestart} variant="game">
+      <Header
+        restart={handleRestart}
+        variant="game"
+        navbarOpen={navbarOpen}
+        setNavbarOpen={setNavbarOpen}
+      >
         <Timer time={time} moves={moves} />
       </Header>
+      <MenuOverlay navbarOpen={navbarOpen} setNavbarOpen={setNavbarOpen} />
       <Gameboard>
         {cards.map((card: any, index: any) => {
           return (
@@ -169,7 +180,7 @@ const Game = ({ children }: GameProps) => {
           );
         })}
       </Gameboard>
-      <Footer />
+      <Footer navbarOpen={navbarOpen} setNavbarOpen={setNavbarOpen} />
     </Layout>
   );
 };
