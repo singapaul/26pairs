@@ -32,10 +32,6 @@ const Header = ({ children, restart, variant, setNavbarOpen }: HeaderProps) => {
   } else if (variant === "menu") {
     return (
       <div className="w-full flex justify-between items-center bg-indigo-900 text-white min-h-20 h-24 px-4">
-        <div>
-          <img className="object-scale-down h-16 w-16 " src={logo} alt="Logo" />
-        </div>
-        {children}
         <div className="flex gap-4">
           <button
             className="bg-purple-500 p-3 border-4 border-black"
@@ -43,6 +39,10 @@ const Header = ({ children, restart, variant, setNavbarOpen }: HeaderProps) => {
           >
             Close
           </button>
+        </div>
+        {children}
+        <div>
+          <img className="object-scale-down h-16 w-16 " src={logo} alt="Logo" />
         </div>
       </div>
     );

@@ -24,41 +24,6 @@ const MenuOverlay = ({ navbarOpen, setNavbarOpen }: MenuOverlayProps) => {
         setNavbarOpen={() => setNavbarOpen(!navbarOpen)}
       />
       <Accordian />
-      {/* <ul className="w-full flex flex-col items-start text-white">
-        <li className="flex  w-full leading-8 list-none focus:outline-none group py-2 tracking-normal opacity-50 hover:opacity-100 transition-all duration-200 ease-in-out">
-          <a
-            href="/"
-            className="h-full w-full py-2 text-lg text-white;"
-            onClick={() => {
-              setNavbarOpen(false);
-            }}
-          >
-            Temp filler content
-          </a>
-        </li>
-        <li className="flex w-full leading-8 list-none focus:outline-none group py-2 tracking-normal opacity-50 hover:opacity-100 transition-all duration-200 ease-in-out">
-          <a
-            href="/"
-            className="h-full w-full py-2 text-lg text-white;"
-            onClick={() => {
-              setNavbarOpen(false);
-            }}
-          >
-            Temp filler content
-          </a>
-        </li>
-        <li className="flex w-full leading-8 list-none focus:outline-none group py-2 tracking-normal opacity-50 hover:opacity-100 transition-all duration-200 ease-in-out">
-          <a
-            href="/"
-            className="h-full w-full py-2 text-lg text-white;"
-            onClick={() => {
-              setNavbarOpen(false);
-            }}
-          >
-            Temp filler content
-          </a>
-        </li>
-      </ul> */}
     </nav>
   );
 };
