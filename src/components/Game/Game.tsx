@@ -8,18 +8,21 @@ import Gameboard from "../Gameboard";
 import Timer from "../Timer";
 import Layout from "../Layout";
 // @ts-ignore
-import { uniqueElementsArray } from "../../data/Simpsons";
-// @ts-ignore
 import { shuffle } from "../../utils/shuffle";
 import MenuOverlay from "../MenuOverlay";
 
 export type GameProps = {
   children?: ReactNode;
+  version?: "classic" | "lite";
+  cardArray: any;
 };
 
-const Game = ({ children }: GameProps) => {
+const Game = ({ version, cardArray }: GameProps) => {
+  console.log(version);
+  console.log(cardArray);
+
   const [cards, setCards] = useState(
-    shuffle.bind(null, uniqueElementsArray.concat(uniqueElementsArray))
+    shuffle.bind(null, cardArray.concat(cardArray))
   );
   const [openCards, setOpenCards] = useState([]);
   const [clearedCards, setClearedCards] = useState({});
@@ -64,11 +67,11 @@ const Game = ({ children }: GameProps) => {
     reset();
     setShouldDisableAllCards(false);
     // set a shuffled deck of cards
-    setCards(shuffle(uniqueElementsArray.concat(uniqueElementsArray)));
+    setCards(shuffle(cardArray.concat(cardArray)));
   };
 
   const checkCompletion = () => {
-    if (Object.keys(clearedCards).length === uniqueElementsArray.length) {
+    if (Object.keys(clearedCards).length === cardArray.length) {
       setShowModal(true);
       stopTimer();
       const highScore = Math.min(moves, bestScore);

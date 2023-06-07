@@ -2,7 +2,7 @@ import * as React from "react";
 import type { HeadFC, PageProps } from "gatsby";
 import Game from "../components/Game";
 // @ts-ignore
-import { uniqueElementsArray } from "../data/Simpsons.js";
+import { uniqueElementsArray } from "../data/Simpsonslite.js";
 
 const pageStyles = {
   color: "#232129",
@@ -13,11 +13,11 @@ const pageStyles = {
 const IndexPage: React.FC<PageProps> = () => {
   return (
     <main style={pageStyles}>
-      <Game version="classic" cardArray={uniqueElementsArray} />
+      <Game cardArray={uniqueElementsArray} version="lite" />
     </main>
   );
 };
 
 export default IndexPage;
 
-export const Head: HeadFC = () => <title>26 Pairs</title>;
+export const Head: HeadFC = () => <title>26 Pairs lite</title>;

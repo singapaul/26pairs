@@ -2,6 +2,7 @@
 
 ## To do list
 
+- Implement two game modes and their routes & sort card size and grid accordingly
 - Drop down menu
 - Implement Toast interface and social share
 - Card reveal at start functionality
