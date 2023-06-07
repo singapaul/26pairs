@@ -18,8 +18,15 @@ export type GameProps = {
 };
 
 const Game = ({ version, cardArray }: GameProps) => {
-  console.log(version);
-  console.log(cardArray);
+  const initValBestScore = () => {
+    if (typeof window !== "undefined") {
+      // @ts-ignore
+      JSON.parse(localStorage.getItem("bestScore")) || Number.POSITIVE_INFINITY;
+      return;
+    } else {
+      return 0;
+    }
+  };
 
   const [cards, setCards] = useState(
     shuffle.bind(null, cardArray.concat(cardArray))
@@ -32,10 +39,7 @@ const Game = ({ version, cardArray }: GameProps) => {
   const [time, setTime] = useState(0);
   const [showModal, setShowModal] = useState(false);
   const [showAboutModal, setShowAboutModal] = useState(false);
-  const [bestScore, setBestScore] = useState(
-    // @ts-ignore
-    JSON.parse(localStorage.getItem("bestScore")) || Number.POSITIVE_INFINITY
-  );
+  const [bestScore, setBestScore] = useState(initValBestScore());
 
   const timeout = useRef(null);
 
@@ -74,10 +78,14 @@ const Game = ({ version, cardArray }: GameProps) => {
     if (Object.keys(clearedCards).length === cardArray.length) {
       setShowModal(true);
       stopTimer();
+      // @ts-ignore
       const highScore = Math.min(moves, bestScore);
       setBestScore(highScore);
       // ts-ignore
-      localStorage.setItem("bestScore", highScore.toString());
+      if (typeof window !== "undefined") {
+        // @ts-ignore
+        localStorage.setItem("bestScore", highScore.toString());
+      }
     }
   };
 
