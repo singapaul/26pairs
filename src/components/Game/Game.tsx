@@ -11,12 +11,14 @@ import Layout from "../Layout";
 import { shuffle } from "../../utils/shuffle";
 import MenuOverlay from "../MenuOverlay";
 // @ts-ignore
-import { uniqueElementsArray } from "../../data/Simpsonslite";
+import { mainCardsLite } from "../../data/Simpsonslite";
+// @ts-ignore
+import { mainCards } from "../../data/Simpsons";
 import { setDefaultResultOrder } from "dns";
+import { version } from "os";
 
 export type GameProps = {
-  children?: ReactNode;
-  version?: "classic" | "lite";
+  version: "classic" | "lite";
 };
 
 const Game = ({ version }: GameProps) => {
@@ -30,6 +32,13 @@ const Game = ({ version }: GameProps) => {
     //   return 0;
     // }
   };
+
+  let uniqueElementsArray: any;
+  if (version === "classic") {
+    uniqueElementsArray = mainCards;
+  } else if (version === "lite") {
+    uniqueElementsArray = mainCardsLite;
+  }
 
   const initCards = shuffle(uniqueElementsArray.concat(uniqueElementsArray));
 

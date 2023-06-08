@@ -2,7 +2,7 @@
 
 ## To do list
 
-- sort card size and grid accordingly
+- sort card size and grid accordingly - single CSS sheet
 - Add pop up for completion
 - Drop down menu
 - Implement Toast interface and social share

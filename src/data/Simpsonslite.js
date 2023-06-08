@@ -11,7 +11,7 @@ import eddie from "../assets/images/Simpsons/Eddie.webp";
 import frank from "../assets/images/Simpsons/Frank_Grimes_Tapped_Out.webp";
 import helen from "../assets/images/Simpsons/Helen_Lovejoy_Tapped_Out.webp";
 
-export const uniqueElementsArray = [
+export const mainCardsLite = [
   { type: "Abe_Simpson", image: abeS },
   { type: "apu", image: apu },
   { type: "Cat_Lady", image: catLady },

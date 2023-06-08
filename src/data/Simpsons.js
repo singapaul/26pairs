@@ -25,7 +25,7 @@ import flanders from "../assets/images/Simpsons/Ned_Flanders.webp";
 import frink from "../assets/images/Simpsons/Professor_Frink.webp";
 import stu from "../assets/images/Simpsons/Tapped_Out_Unlock_Disco_Stu.webp";
 
-export const uniqueElementsArray = [
+export const mainCards = [
   { type: "Abe_Simpson", image: abeS },
   { type: "apu", image: apu },
   { type: "Cat_Lady", image: catLady },

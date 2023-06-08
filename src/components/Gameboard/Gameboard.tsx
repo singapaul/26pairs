@@ -1,5 +1,6 @@
 import React from "react";
 import { ReactNode } from "react";
+import "./style.css";
 
 export type GameboardProps = {
   children?: ReactNode;
@@ -9,7 +10,8 @@ export type GameboardProps = {
 
 const Gameboard = ({ children }: GameboardProps) => {
   return (
-    <div className="grid grid-cols-6 gap-2 w-full justify-items-center items-center p-4">
+    // grid grid-cols-6 gap-2
+    <div className="flex flex-wrap justify-center gap-2 w-full demo">
       {children}
     </div>
   );
