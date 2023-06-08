@@ -13,7 +13,7 @@ const pageStyles = {
 const IndexPage: React.FC<PageProps> = () => {
   return (
     <main style={pageStyles}>
-      <Game version="classic" cardArray={uniqueElementsArray} />
+      <Game version="classic" />
     </main>
   );
 };

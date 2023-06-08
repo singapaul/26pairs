@@ -1,11 +1,30 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 export type TimerProps = {
   moves: number;
-  time: number;
+  isRunning: boolean;
+  resetTime: boolean;
 };
 
-const Timer = ({ moves = 0, time = 0 }: TimerProps) => {
+const Timer = ({ moves = 0, isRunning, resetTime }: TimerProps) => {
+  const [time, setTime] = useState(0);
+
+  useEffect(() => {
+    // @ts-ignore
+    let intervalId;
+    if (isRunning) {
+      // setting time from 0 to 1 every 10 milisecond using javascript setInterval method
+      intervalId = setInterval(() => setTime(time + 1), 10);
+    }
+
+    // @ts-ignore
+    return () => clearInterval(intervalId);
+  }, [isRunning, time]);
+
+  useEffect(() => {
+    setTime(0);
+  }, [resetTime]);
+
   // Minutes calculation
   const minutes = Math.floor((time % 360000) / 6000);
   // Seconds calculation

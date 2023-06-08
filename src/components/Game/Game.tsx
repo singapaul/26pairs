@@ -10,40 +10,44 @@ import Layout from "../Layout";
 // @ts-ignore
 import { shuffle } from "../../utils/shuffle";
 import MenuOverlay from "../MenuOverlay";
+// @ts-ignore
+import { uniqueElementsArray } from "../../data/Simpsonslite";
+import { setDefaultResultOrder } from "dns";
 
 export type GameProps = {
   children?: ReactNode;
   version?: "classic" | "lite";
-  cardArray: any;
 };
 
-const Game = ({ version, cardArray }: GameProps) => {
+const Game = ({ version }: GameProps) => {
   const initValBestScore = () => {
-    if (typeof window !== "undefined") {
-      // @ts-ignore
-      JSON.parse(localStorage.getItem("bestScore")) || Number.POSITIVE_INFINITY;
-      return;
-    } else {
-      return 0;
-    }
+    console.log("the score");
+    // if (typeof window !== "undefined") {
+    //   // @ts-ignore
+    //   JSON.parse(localStorage.getItem("bestScore")) || Number.POSITIVE_INFINITY;
+    //   return;
+    // } else {
+    //   return 0;
+    // }
   };
 
-  const [cards, setCards] = useState(
-    shuffle.bind(null, cardArray.concat(cardArray))
-  );
+  const initCards = shuffle(uniqueElementsArray.concat(uniqueElementsArray));
+
+  const [cards, setCards] = useState(initCards);
   const [openCards, setOpenCards] = useState([]);
   const [clearedCards, setClearedCards] = useState({});
   const [shouldDisableAllCards, setShouldDisableAllCards] = useState(false);
   const [moves, setMoves] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
-  const [time, setTime] = useState(0);
+  const [resetTime, setResetTime] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [showAboutModal, setShowAboutModal] = useState(false);
   const [bestScore, setBestScore] = useState(initValBestScore());
 
   const timeout = useRef(null);
-
+  console.log(cards);
   const startTimer = () => {
+    setResetTime(false);
     setIsRunning(true);
   };
 
@@ -53,7 +57,7 @@ const Game = ({ version, cardArray }: GameProps) => {
 
   // Method to reset timer back to 0
   const reset = () => {
-    setTime(0);
+    setResetTime(true);
   };
 
   // @ts-ignore
@@ -71,16 +75,17 @@ const Game = ({ version, cardArray }: GameProps) => {
     reset();
     setShouldDisableAllCards(false);
     // set a shuffled deck of cards
-    setCards(shuffle(cardArray.concat(cardArray)));
+    setCards(shuffle(uniqueElementsArray.concat(uniqueElementsArray)));
   };
 
   const checkCompletion = () => {
-    if (Object.keys(clearedCards).length === cardArray.length) {
+    if (Object.keys(clearedCards).length === uniqueElementsArray.length) {
+      console.log("Game Completed");
       setShowModal(true);
       stopTimer();
       // @ts-ignore
       const highScore = Math.min(moves, bestScore);
-      setBestScore(highScore);
+      // setBestScore(highScore);
       // ts-ignore
       if (typeof window !== "undefined") {
         // @ts-ignore
@@ -90,6 +95,7 @@ const Game = ({ version, cardArray }: GameProps) => {
   };
 
   const evaluate = () => {
+    console.log("evaluation function called");
     // Each time a second card is selected this function is called from a useEffect
     const [first, second] = openCards;
     enable();
@@ -107,7 +113,9 @@ const Game = ({ version, cardArray }: GameProps) => {
 
   // @ts-ignore
   const handleCardClick = (index) => {
+    console.log("handleclick function called");
     startTimer();
+    console.log("stuck here");
     if (openCards.length === 1) {
       // @ts-ignore
       setOpenCards((prev) => [...prev, index]);
@@ -123,6 +131,7 @@ const Game = ({ version, cardArray }: GameProps) => {
   };
 
   useEffect(() => {
+    console.log("1");
     // @ts-ignore
     let timeout = null;
     if (openCards.length === 2) {
@@ -135,6 +144,7 @@ const Game = ({ version, cardArray }: GameProps) => {
   }, [openCards]);
 
   useEffect(() => {
+    console.log("2");
     checkCompletion();
   }, [clearedCards]);
   // @ts-ignore
@@ -142,17 +152,6 @@ const Game = ({ version, cardArray }: GameProps) => {
     // @ts-ignore
     return openCards.includes(index);
   };
-
-  useEffect(() => {
-    // @ts-ignore
-    let intervalId;
-    if (isRunning) {
-      // setting time from 0 to 1 every 10 milisecond using javascript setInterval method
-      intervalId = setInterval(() => setTime(time + 1), 10);
-    }
-    // @ts-ignore
-    return () => clearInterval(intervalId);
-  }, [isRunning, time]);
 
   const disable = () => {
     setShouldDisableAllCards(true);
@@ -173,7 +172,7 @@ const Game = ({ version, cardArray }: GameProps) => {
         navbarOpen={navbarOpen}
         setNavbarOpen={setNavbarOpen}
       >
-        <Timer time={time} moves={moves} />
+        <Timer isRunning={isRunning} moves={moves} resetTime={resetTime} />
       </Header>
       <MenuOverlay navbarOpen={navbarOpen} setNavbarOpen={setNavbarOpen} />
       <Gameboard>

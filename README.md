@@ -2,7 +2,8 @@
 
 ## To do list
 
-- Implement two game modes and their routes & sort card size and grid accordingly
+- sort card size and grid accordingly
+- Add pop up for completion
 - Drop down menu
 - Implement Toast interface and social share
 - Card reveal at start functionality
@@ -13,6 +14,11 @@
 - Set up Tailwind theming: https://www.youtube.com/watch?v=MAtaT8BZEAo&ab_channel=TailwindLabs
 
 - set up PWA status
+
+https://www.gatsbyjs.com/plugins/gatsby-plugin-offline/
+https://www.gatsbyjs.com/plugins/gatsby-plugin-manifest/
+https://www.gatsbyjs.com/docs/progressive-web-app/
+
 - Integrate dark mode
 - Contenful integration
 - Vercel Web Analytics// Google Analytics : https://vercel.com/analytics
@@ -24,6 +30,15 @@
 - Google fonts/icons integration (see wordy)
 
 ## Done
+
+08/06
+
+- reverted to importing cards into each page
+- extrapolated timer into seperate component.
+
+07/06
+
+- Implement two game modes and their routes &
 
 30/05
 
