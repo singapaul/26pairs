@@ -11,7 +11,7 @@ export type GameboardProps = {
 const Gameboard = ({ children }: GameboardProps) => {
   return (
     // grid grid-cols-6 gap-2
-    <div className="flex flex-wrap justify-center gap-2 w-full demo">
+    <div className="flex flex-wrap justify-center h-full w-full gap-1 p-2">
       {children}
     </div>
   );

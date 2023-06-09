@@ -195,6 +195,7 @@ const Game = ({ version }: GameProps) => {
               isInactive={checkIsInactive(card)}
               isFlipped={checkIsFlipped(index)}
               onClick={handleCardClick}
+              version={version}
             />
           );
         })}

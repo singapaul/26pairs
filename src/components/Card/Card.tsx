@@ -13,6 +13,7 @@ export type CardProps = {
   isInactive?: any;
   isFlipped: any;
   isDisabled: any;
+  version: "classic" | "lite";
 };
 
 // @to-do pass the card a prop telling the component if you're playing classic (52) or premier league version (24)
@@ -24,6 +25,7 @@ const Card = ({
   isInactive,
   isFlipped,
   isDisabled,
+  version,
 }: CardProps) => {
   const handleClick = () => {
     !isFlipped && !isDisabled && onClick(index);
@@ -33,10 +35,13 @@ const Card = ({
     // <div className="border-solid border-2 border-black bg-sky-500 h-12 w-12">
     //   {children}
     // </div>
+
     <div
       className={classnames("card", {
         "is-flipped": isFlipped,
         "is-inactive": isInactive,
+        classicCard: version === "classic",
+        liteCard: version === "lite",
       })}
       onClick={handleClick}
     >

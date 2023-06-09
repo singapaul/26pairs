@@ -2,7 +2,6 @@
 
 ## To do list
 
-- sort card size and grid accordingly - single CSS sheet
 - Add pop up for completion
 - Drop down menu
 - Implement Toast interface and social share
@@ -30,6 +29,10 @@ https://www.gatsbyjs.com/docs/progressive-web-app/
 - Google fonts/icons integration (see wordy)
 
 ## Done
+
+09/06
+
+- sort card size and grid accordingly - single CSS sheet
 
 08/06
 
