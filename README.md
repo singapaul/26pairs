@@ -2,14 +2,13 @@
 
 ## To do list
 
-- Add pop up for completion
-- Drop down menu
-- Implement Toast interface and social share
+- Implement pop up for social sharing and about section
+- About/Rules pop up
+- social share pop up
+- Implement Toast interface and social share (tinyURL?)
 - Card reveal at start functionality
-- Deploy
 - fix TS import issues
 - Implement imports with @
-- Finish header/footer
 - Set up Tailwind theming: https://www.youtube.com/watch?v=MAtaT8BZEAo&ab_channel=TailwindLabs
 
 - set up PWA status
@@ -21,7 +20,7 @@ https://www.gatsbyjs.com/docs/progressive-web-app/
 - Integrate dark mode
 - Contenful integration
 - Vercel Web Analytics// Google Analytics : https://vercel.com/analytics
-- Grid bottom alignment
+
 - Set up 2-3 versions for card configs
 
 - Difficulty mode
@@ -30,14 +29,20 @@ https://www.gatsbyjs.com/docs/progressive-web-app/
 
 ## Done
 
+12/06
+
+- Add pop up for completion
+
 09/06
 
 - sort card size and grid accordingly - single CSS sheet
 
 08/06
 
+- Deploy
 - reverted to importing cards into each page
 - extrapolated timer into seperate component.
+- Grid bottom alignment
 
 07/06
 
@@ -45,6 +50,7 @@ https://www.gatsbyjs.com/docs/progressive-web-app/
 
 30/05
 
+- Finish header/footer
 - Created basic components structure
 
 31/05

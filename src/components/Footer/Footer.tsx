@@ -6,6 +6,8 @@ export type FooterProps = {
   menuCick?: any;
   navbarOpen: any;
   setNavbarOpen: any;
+  sharePopupOpen: any;
+  setSharePopupOpen: any;
 };
 
 const buttonTemplate = (icon: any, label: string, onClick: any) => (
@@ -21,7 +23,13 @@ const buttonTemplate = (icon: any, label: string, onClick: any) => (
   </button>
 );
 
-const Footer = ({ children, navbarOpen, setNavbarOpen }: FooterProps) => {
+const Footer = ({
+  children,
+  navbarOpen,
+  setNavbarOpen,
+  sharePopupOpen,
+  setSharePopupOpen,
+}: FooterProps) => {
   const buttonArray = [
     {
       icon: (
@@ -93,7 +101,7 @@ const Footer = ({ children, navbarOpen, setNavbarOpen }: FooterProps) => {
       ),
       label: "Share",
       onClick: () => {
-        console.log("hello");
+        setSharePopupOpen(!sharePopupOpen);
       },
     },
   ];

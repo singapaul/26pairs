@@ -16,6 +16,7 @@ import { mainCardsLite } from "../../data/Simpsonslite";
 import { mainCards } from "../../data/Simpsons";
 import { setDefaultResultOrder } from "dns";
 import { version } from "os";
+import Popup from "../Popup";
 
 export type GameProps = {
   version: "classic" | "lite";
@@ -173,6 +174,18 @@ const Game = ({ version }: GameProps) => {
 
   const [navbarOpen, setNavbarOpen] = useState(false);
 
+  // Popup open close:
+
+  const [showPopup, setShowPopup] = useState(false);
+
+  const handleOpenPopup = () => {
+    setShowPopup(true);
+  };
+
+  const handleClosePopup = () => {
+    setShowPopup(false);
+  };
+
   return (
     <Layout>
       <Header
@@ -184,6 +197,7 @@ const Game = ({ version }: GameProps) => {
         <Timer isRunning={isRunning} moves={moves} resetTime={resetTime} />
       </Header>
       <MenuOverlay navbarOpen={navbarOpen} setNavbarOpen={setNavbarOpen} />
+      <Popup show={showPopup} onClose={handleClosePopup} />
       <Gameboard>
         {cards.map((card: any, index: any) => {
           return (
@@ -200,7 +214,12 @@ const Game = ({ version }: GameProps) => {
           );
         })}
       </Gameboard>
-      <Footer navbarOpen={navbarOpen} setNavbarOpen={setNavbarOpen} />
+      <Footer
+        navbarOpen={navbarOpen}
+        setNavbarOpen={setNavbarOpen}
+        sharePopupOpen={showPopup}
+        setSharePopupOpen={handleOpenPopup}
+      />
     </Layout>
   );
 };
