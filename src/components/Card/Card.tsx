@@ -47,6 +47,7 @@ const Card = ({
     >
       <div className="card-face card-font-face">
         <img src={back} alt="pokeball" className="picture-back" />
+        <p>{card.type}</p>
       </div>
       <div className="card-face card-back-face">
         <img src={card.image} className="picture-front" alt="pokeball" />

@@ -12,16 +12,16 @@ import frank from "../assets/images/Simpsons/Frank_Grimes_Tapped_Out.webp";
 import helen from "../assets/images/Simpsons/Helen_Lovejoy_Tapped_Out.webp";
 
 export const mainCardsLite = [
-  { type: "Abe_Simpson", image: abeS },
-  { type: "apu", image: apu },
-  { type: "Cat_Lady", image: catLady },
-  { type: "Akira", image: akira },
-  { type: "barney", image: barney },
-  { type: "bart", image: bart },
-  { type: "goofball", image: goofball },
-  { type: "carl", image: carl },
-  { type: "Comic_Book_Guy", image: Comic_Book_Guy },
-  { type: "eddie", image: eddie },
-  { type: "frank", image: frank },
-  { type: "helen", image: helen },
+  { type: "Abe_Simpson", image: abeS, id: "abe" },
+  { type: "apu", image: apu, id: "apu" },
+  { type: "Cat_Lady", image: catLady, id: "catlady" },
+  { type: "Akira", image: akira, id: "akira" },
+  { type: "barney", image: barney, id: "barney" },
+  { type: "bart", image: bart, id: "bart" },
+  { type: "goofball", image: goofball, id: "goofball" },
+  { type: "carl", image: carl, id: "carl" },
+  { type: "Comic_Book_Guy", image: Comic_Book_Guy, id: "comicbookguy" },
+  { type: "eddie", image: eddie, id: "eddie" },
+  { type: "frank", image: frank, id: "frank" },
+  { type: "helen", image: helen, id: "helen" },
 ];

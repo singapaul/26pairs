@@ -14,8 +14,6 @@ import MenuOverlay from "../MenuOverlay";
 import { mainCardsLite } from "../../data/Simpsonslite";
 // @ts-ignore
 import { mainCards } from "../../data/Simpsons";
-import { setDefaultResultOrder } from "dns";
-import { version } from "os";
 import Popup from "../Popup";
 
 export type GameProps = {
@@ -24,7 +22,6 @@ export type GameProps = {
 
 const Game = ({ version }: GameProps) => {
   const initValBestScore = () => {
-    console.log("the score");
     // if (typeof window !== "undefined") {
     //   // @ts-ignore
     //   JSON.parse(localStorage.getItem("bestScore")) || Number.POSITIVE_INFINITY;
@@ -36,14 +33,12 @@ const Game = ({ version }: GameProps) => {
 
   let uniqueElementsArray: any;
   if (version === "classic") {
-    uniqueElementsArray = mainCards;
+    uniqueElementsArray = mainCards.concat(mainCards);
   } else if (version === "lite") {
-    uniqueElementsArray = mainCardsLite;
+    uniqueElementsArray = mainCardsLite.concat(mainCardsLite);
   }
 
-  const initCards = shuffle(uniqueElementsArray.concat(uniqueElementsArray));
-
-  const [cards, setCards] = useState(initCards);
+  const [cards, setCards] = useState(shuffle(uniqueElementsArray));
   const [openCards, setOpenCards] = useState([]);
   const [clearedCards, setClearedCards] = useState({});
   const [shouldDisableAllCards, setShouldDisableAllCards] = useState(false);
@@ -55,7 +50,7 @@ const Game = ({ version }: GameProps) => {
   const [bestScore, setBestScore] = useState(initValBestScore());
 
   const timeout = useRef(null);
-  console.log(cards);
+
   const startTimer = () => {
     setResetTime(false);
     setIsRunning(true);
@@ -85,12 +80,11 @@ const Game = ({ version }: GameProps) => {
     reset();
     setShouldDisableAllCards(false);
     // set a shuffled deck of cards
-    setCards(shuffle(uniqueElementsArray.concat(uniqueElementsArray)));
+    setCards(shuffle(uniqueElementsArray));
   };
 
   const checkCompletion = () => {
     if (Object.keys(clearedCards).length === uniqueElementsArray.length) {
-      console.log("Game Completed");
       setShowModal(true);
       stopTimer();
       // @ts-ignore
@@ -108,7 +102,10 @@ const Game = ({ version }: GameProps) => {
     console.log("evaluation function called");
     // Each time a second card is selected this function is called from a useEffect
     const [first, second] = openCards;
+    console.log(openCards);
     enable();
+    console.log(cards[first]);
+    console.log(cards[second]);
     if (cards[first].type === cards[second].type) {
       setClearedCards((prev) => ({ ...prev, [cards[first].type]: true }));
       setOpenCards([]);
@@ -123,9 +120,10 @@ const Game = ({ version }: GameProps) => {
 
   // @ts-ignore
   const handleCardClick = (index) => {
-    console.log("handleclick function called");
+    console.log("Card clicked" + index);
+    console.log(openCards);
     startTimer();
-    console.log("stuck here");
+
     if (openCards.length === 1) {
       // @ts-ignore
       setOpenCards((prev) => [...prev, index]);
@@ -141,7 +139,6 @@ const Game = ({ version }: GameProps) => {
   };
 
   useEffect(() => {
-    console.log("1");
     // @ts-ignore
     let timeout = null;
     if (openCards.length === 2) {
@@ -154,7 +151,6 @@ const Game = ({ version }: GameProps) => {
   }, [openCards]);
 
   useEffect(() => {
-    console.log("2");
     checkCompletion();
   }, [clearedCards]);
   // @ts-ignore
