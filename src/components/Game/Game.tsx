@@ -1,6 +1,5 @@
 import React from "react";
 import { useEffect, useState, useRef } from "react";
-import { ReactNode } from "react";
 import Header from "../Header";
 import Footer from "../Footer";
 import Card from "../Card";
