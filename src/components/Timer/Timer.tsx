@@ -13,13 +13,9 @@ const Timer = ({ moves = 0, isRunning, resetTime, isPause }: TimerProps) => {
   useEffect(() => {
     // @ts-ignore
     let intervalId;
-    if (isRunning) {
+    if (isRunning && !isPause) {
       // setting time from 0 to 1 every 10 milisecond using javascript setInterval method
       intervalId = setInterval(() => setTime(time + 1), 10);
-    }
-
-    if (isPause) {
-      intervalId = setInterval(() => setTime(time), 10);
     }
 
     // @ts-ignore

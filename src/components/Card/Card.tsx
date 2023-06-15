@@ -31,11 +31,6 @@ const Card = ({
     !isFlipped && !isDisabled && onClick(index);
   };
   return (
-    // tailwind card classes
-    // <div className="border-solid border-2 border-black bg-sky-500 h-12 w-12">
-    //   {children}
-    // </div>
-
     <div
       className={classnames("card", {
         "is-flipped": isFlipped,
@@ -47,7 +42,6 @@ const Card = ({
     >
       <div className="card-face card-font-face">
         <img src={back} alt="pokeball" className="picture-back" />
-        <p>{card.type}</p>
       </div>
       <div className="card-face card-back-face">
         <img src={card.image} className="picture-front" alt="pokeball" />

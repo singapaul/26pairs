@@ -89,8 +89,9 @@ const Game = ({ version }: GameProps) => {
       setShowModal(true);
       // stopTimer();
       console.log("game completed");
-      setIsRunning(false);
+      // setIsRunning(false);
       setIsPause(true);
+      alert("Placeholder: game completed");
       // @ts-ignore
       const highScore = Math.min(moves, bestScore);
       // setBestScore(highScore);
@@ -218,6 +219,13 @@ const Game = ({ version }: GameProps) => {
           );
         })}
       </Gameboard>
+      <button
+        onClick={() => {
+          setIsPause(!isPause);
+        }}
+      >
+        Pause Game
+      </button>
       <Footer
         navbarOpen={navbarOpen}
         setNavbarOpen={setNavbarOpen}
