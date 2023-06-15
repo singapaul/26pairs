@@ -4,9 +4,10 @@ export type TimerProps = {
   moves: number;
   isRunning: boolean;
   resetTime: boolean;
+  isPause: boolean;
 };
 
-const Timer = ({ moves = 0, isRunning, resetTime }: TimerProps) => {
+const Timer = ({ moves = 0, isRunning, resetTime, isPause }: TimerProps) => {
   const [time, setTime] = useState(0);
 
   useEffect(() => {
@@ -17,13 +18,17 @@ const Timer = ({ moves = 0, isRunning, resetTime }: TimerProps) => {
       intervalId = setInterval(() => setTime(time + 1), 10);
     }
 
+    if (isPause) {
+      intervalId = setInterval(() => setTime(time), 10);
+    }
+
     // @ts-ignore
     return () => clearInterval(intervalId);
   }, [isRunning, time]);
 
   useEffect(() => {
     setTime(0);
-  }, [resetTime]);
+  }, [resetTime, isRunning]);
 
   // Minutes calculation
   const minutes = Math.floor((time % 360000) / 6000);

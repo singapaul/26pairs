@@ -45,6 +45,7 @@ const Game = ({ version }: GameProps) => {
   const [isRunning, setIsRunning] = useState(false);
   const [resetTime, setResetTime] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [isPause, setIsPause] = useState(false);
   const [showAboutModal, setShowAboutModal] = useState(false);
   const [bestScore, setBestScore] = useState(initValBestScore());
 
@@ -71,6 +72,7 @@ const Game = ({ version }: GameProps) => {
   };
 
   const handleRestart = () => {
+    setIsPause(false);
     setClearedCards({});
     setOpenCards([]);
     setShowModal(false);
@@ -83,9 +85,12 @@ const Game = ({ version }: GameProps) => {
   };
 
   const checkCompletion = () => {
-    if (Object.keys(clearedCards).length === uniqueElementsArray.length) {
+    if (Object.keys(clearedCards).length === uniqueElementsArray.length / 2) {
       setShowModal(true);
-      stopTimer();
+      // stopTimer();
+      console.log("game completed");
+      setIsRunning(false);
+      setIsPause(true);
       // @ts-ignore
       const highScore = Math.min(moves, bestScore);
       // setBestScore(highScore);
@@ -101,15 +106,16 @@ const Game = ({ version }: GameProps) => {
     console.log("evaluation function called");
     // Each time a second card is selected this function is called from a useEffect
     const [first, second] = openCards;
-    console.log(openCards);
     enable();
-    console.log(cards[first]);
-    console.log(cards[second]);
+
     if (cards[first].type === cards[second].type) {
       setClearedCards((prev) => ({ ...prev, [cards[first].type]: true }));
       setOpenCards([]);
       return;
     }
+
+    console.log(Object.keys(clearedCards).length);
+    console.log(uniqueElementsArray.length);
     // This is to flip the cards back after 500ms duration
     // @ts-ignore
     timeout.current = setTimeout(() => {
@@ -119,8 +125,6 @@ const Game = ({ version }: GameProps) => {
 
   // @ts-ignore
   const handleCardClick = (index) => {
-    console.log("Card clicked" + index);
-    console.log(openCards);
     startTimer();
 
     if (openCards.length === 1) {
@@ -189,7 +193,12 @@ const Game = ({ version }: GameProps) => {
         navbarOpen={navbarOpen}
         setNavbarOpen={setNavbarOpen}
       >
-        <Timer isRunning={isRunning} moves={moves} resetTime={resetTime} />
+        <Timer
+          isRunning={isRunning}
+          moves={moves}
+          resetTime={resetTime}
+          isPause={isPause}
+        />
       </Header>
       <MenuOverlay navbarOpen={navbarOpen} setNavbarOpen={setNavbarOpen} />
       <Popup show={showPopup} onClose={handleClosePopup} />

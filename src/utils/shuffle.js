@@ -25,6 +25,5 @@ export const shuffle = (array) => {
     array[i] = array[j];
     array[j] = temp;
   }
-  console.log(array);
   return array;
 };
