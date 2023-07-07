@@ -11,7 +11,7 @@ import { shuffle } from "../../utils/shuffle";
 import { mainCardsLite } from "../../data/Simpsonslite";
 // @ts-ignore
 import { mainCards } from "../../data/Simpsons";
-import Popup from "../Popup";
+
 
 
 
@@ -209,7 +209,6 @@ const Game = ({ version }: GameProps) => {
           );
         })}
       </Gameboard>
-      <Popup/>
     </Layout>
   );
 };

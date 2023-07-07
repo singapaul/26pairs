@@ -34,17 +34,16 @@ const Timer = ({ moves = 0, isRunning, resetTime, isPause }: TimerProps) => {
   const milliseconds = time % 100;
 
   return (
-    <div className="flex w-fit gap-6 border-4 border-indigo-600">
+    <div className="flex bg-neutral-500 gap-2 border-2 border-orange-50 rounded p-4 my-3">
       <div>
         <h2>Moves</h2>
         <p>{moves}</p>
       </div>
-      <div>
+      <div className="flex flex-col items-end w-20">
         <h2>Time</h2>
-        <p>
+        <p className="">
           {minutes.toString().padStart(2, "0")}:
-          {seconds.toString().padStart(2, "0")}:
-          {milliseconds.toString().padStart(2, "0")}
+          {seconds.toString().padStart(2, "0")}
         </p>
       </div>
     </div>

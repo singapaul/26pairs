@@ -3,7 +3,9 @@ import { ReactNode } from "react";
 // @ts-ignore
 import logo from "../../assets/images/icon.png";
 import AboutPopup from "../AboutPopup";
-import MenuButton from "../MenuButton";
+import SettingsPopup from "../SettingsPopup";
+import StatsPopup from "../StatsPopup";
+import { IoIosSettings } from "react-icons/io";
 
 export type HeaderProps = {
   children?: ReactNode;
@@ -15,21 +17,20 @@ export type HeaderProps = {
 
 const Header = ({ children, restart, variant, setNavbarOpen }: HeaderProps) => {
   return (
-    <header className="border-2 border-rose-500 w-full">
+    <header className="w-full border-b-2 border-white">
       <nav className="flex justify-between w-full">
         <div className="flex items-center">
-          <p>E</p>
-          <img alt="icon" src={logo} className="w-4 h-4" />
+          <IoIosSettings />
+          <p className="text-md">
+            <img alt="icon" src={logo} className="w-16 h-16" />
+          </p>
         </div>
         {children}
         <div className="flex items-center">
           <AboutPopup />
-          <p>B</p>
-          <p>C</p>
+          <StatsPopup />
+          <SettingsPopup />
         </div>
-        {/* Accordian and logo */}
-        {/* Timer */}
-        {/* pop up icons settings, about and stats */}
       </nav>
     </header>
   );

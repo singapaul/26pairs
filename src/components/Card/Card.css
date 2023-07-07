@@ -1,27 +1,25 @@
-.classicCard{
-display: inline-block;
-width: 100%;
-min-width: 35px;
-min-height: 50px;
-max-width: 56px;
-max-height: 80px;
+.classicCard {
+  display: inline-block;
+  width: 100%;
+  min-width: 35px;
+  min-height: 50px;
+  max-width: 56px;
+  max-height: 80px;
 }
 
-.liteCard{
+.liteCard {
   display: inline-block;
   min-width: 35px;
-min-height: 50px;
-max-width: 80.08px;
-width: 100%;
-max-height: 114.4px;
+  min-height: 50px;
+  max-width: 80.08px;
+  width: 100%;
+  max-height: 114.4px;
 }
 
-
 .card {
-
   border-radius: 4px;
   box-shadow: 2px #dedede;
-  border: 2px solid black;
+  border: 2px solid #fff7ed;
   transition: 0.3s;
   transform-style: preserve-3d;
   position: relative;
