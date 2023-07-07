@@ -34,7 +34,7 @@ const Timer = ({ moves = 0, isRunning, resetTime, isPause }: TimerProps) => {
   const milliseconds = time % 100;
 
   return (
-    <div className="flex w-fit gap-6 justify-between bg-indigo-700 py-2 px-6 rounded-2xl">
+    <div className="flex w-fit gap-6 border-4 border-indigo-600">
       <div>
         <h2>Moves</h2>
         <p>{moves}</p>

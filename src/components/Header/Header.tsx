@@ -2,53 +2,37 @@ import React from "react";
 import { ReactNode } from "react";
 // @ts-ignore
 import logo from "../../assets/images/icon.png";
+import AboutPopup from "../AboutPopup";
+import MenuButton from "../MenuButton";
 
 export type HeaderProps = {
-  children: ReactNode;
-  variant: "game" | "menu";
-  restart: any;
+  children?: ReactNode;
+  variant?: "game" | "menu";
+  restart?: any;
   navbarOpen?: any;
   setNavbarOpen?: any;
 };
 
 const Header = ({ children, restart, variant, setNavbarOpen }: HeaderProps) => {
-  if (variant === "game") {
-    return (
-      <div className="w-full flex justify-between items-center bg-indigo-900 text-white min-h-20 h-24 px-4">
-        <div>
-          <img className="object-scale-down h-16 w-16 " src={logo} alt="Logo" />
+  return (
+    <header className="border-2 border-rose-500 w-full">
+      <nav className="flex justify-between w-full">
+        <div className="flex items-center">
+          <p>E</p>
+          <img alt="icon" src={logo} className="w-4 h-4" />
         </div>
         {children}
-        <div className="flex gap-4">
-          <button
-            className="bg-red-500 p-3 border-4 border-black"
-            onClick={() => restart()}
-          >
-            Restart
-          </button>
+        <div className="flex items-center">
+          <AboutPopup />
+          <p>B</p>
+          <p>C</p>
         </div>
-      </div>
-    );
-  } else if (variant === "menu") {
-    return (
-      <div className="w-full flex justify-between items-center bg-indigo-900 text-white min-h-20 h-24 px-4">
-        <div className="flex gap-4">
-          <button
-            className="bg-purple-500 p-3 border-4 border-black"
-            onClick={setNavbarOpen}
-          >
-            Close
-          </button>
-        </div>
-        {children}
-        <div>
-          <img className="object-scale-down h-16 w-16 " src={logo} alt="Logo" />
-        </div>
-      </div>
-    );
-  } else {
-    return <div>error</div>;
-  }
+        {/* Accordian and logo */}
+        {/* Timer */}
+        {/* pop up icons settings, about and stats */}
+      </nav>
+    </header>
+  );
 };
 
 export default Header;

@@ -2,6 +2,9 @@
 
 ## To do list
 
+- set up local storage for game statistics
+- fix max width - of game board
+- address whatsapp bugs
 - Implement pop up for social sharing and about section
 - About/Rules pop up
 - social share pop up
@@ -28,6 +31,10 @@ https://www.gatsbyjs.com/docs/progressive-web-app/
 - Google fonts/icons integration (see wordy)
 
 ## Done
+
+05/07
+
+- back to work
 
 12/06
 

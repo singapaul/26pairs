@@ -13,7 +13,7 @@ export type FooterProps = {
 const buttonTemplate = (icon: any, label: string, onClick: any) => (
   <button
     type="button"
-    className="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50 dark:hover:bg-gray-800 group"
+    className="inline-flex flex-col items-center justify-center pt-2 px-5 hover:bg-gray-50 dark:hover:bg-gray-800 group"
     onClick={() => onClick()}
   >
     {icon}

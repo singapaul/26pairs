@@ -1,19 +1,19 @@
 import React from "react";
 import { useEffect, useState, useRef } from "react";
 import Header from "../Header";
-import Footer from "../Footer";
 import Card from "../Card";
 import Gameboard from "../Gameboard";
 import Timer from "../Timer";
 import Layout from "../Layout";
 // @ts-ignore
 import { shuffle } from "../../utils/shuffle";
-import MenuOverlay from "../MenuOverlay";
 // @ts-ignore
 import { mainCardsLite } from "../../data/Simpsonslite";
 // @ts-ignore
 import { mainCards } from "../../data/Simpsons";
 import Popup from "../Popup";
+
+
 
 export type GameProps = {
   version: "classic" | "lite";
@@ -114,9 +114,6 @@ const Game = ({ version }: GameProps) => {
       setOpenCards([]);
       return;
     }
-
-    console.log(Object.keys(clearedCards).length);
-    console.log(uniqueElementsArray.length);
     // This is to flip the cards back after 500ms duration
     // @ts-ignore
     timeout.current = setTimeout(() => {
@@ -177,11 +174,6 @@ const Game = ({ version }: GameProps) => {
   // Popup open close:
 
   const [showPopup, setShowPopup] = useState(false);
-
-  const handleOpenPopup = () => {
-    setShowPopup(true);
-  };
-
   const handleClosePopup = () => {
     setShowPopup(false);
   };
@@ -201,8 +193,6 @@ const Game = ({ version }: GameProps) => {
           isPause={isPause}
         />
       </Header>
-      <MenuOverlay navbarOpen={navbarOpen} setNavbarOpen={setNavbarOpen} />
-      <Popup show={showPopup} onClose={handleClosePopup} />
       <Gameboard>
         {cards.map((card: any, index: any) => {
           return (
@@ -219,19 +209,7 @@ const Game = ({ version }: GameProps) => {
           );
         })}
       </Gameboard>
-      <button
-        onClick={() => {
-          setIsPause(!isPause);
-        }}
-      >
-        Pause Game
-      </button>
-      <Footer
-        navbarOpen={navbarOpen}
-        setNavbarOpen={setNavbarOpen}
-        sharePopupOpen={showPopup}
-        setSharePopupOpen={handleOpenPopup}
-      />
+      <Popup/>
     </Layout>
   );
 };
