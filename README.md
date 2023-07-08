@@ -2,7 +2,15 @@
 
 ## To do list
 
-- make look nice!
+1. About how to play the game section
+2. Completed Game Pop up
+3. Switch away from Simpsons
+4. Statistics Pop up
+5. Contentful hookup
+6. Dark Mode
+7. Switch between decks
+8. Side Menu
+
 - set up local storage for game statistics
 - address whatsapp bugs
 - Implement pop up for social sharing and about section

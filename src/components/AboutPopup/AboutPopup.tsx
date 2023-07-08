@@ -20,7 +20,7 @@ const AboutPopup = ({ show, onClose }: AboutPopupProps) => {
       <div className="relative" ref={menuRef}>
         <button className="p-2 rounded-full" onClick={toggleMenu}>
           <p className="text-4xl">
-            <AiOutlineQuestionCircle/>
+            <AiOutlineQuestionCircle />
           </p>
         </button>
 
@@ -32,18 +32,20 @@ const AboutPopup = ({ show, onClose }: AboutPopupProps) => {
               className="fixed inset-0 bg-black opacity-50"
             ></div>
             {/* The menu */}
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white w-48 py-2 rounded-md shadow-lg transition-transform duration-300">
-              <ul className="py-2">
-                <li className="px-4 py-2 hover:bg-blue-100 cursor-pointer">
-                  Option 1
-                </li>
-                <li className="px-4 py-2 hover:bg-blue-100 cursor-pointer">
-                  Option 2
-                </li>
-                <li className="px-4 py-2 hover:bg-blue-100 cursor-pointer">
-                  Option 3
-                </li>
-              </ul>
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white w-48 py-2 rounded-md shadow-lg transition-transform duration-300 w-80 text-black flex flex-col p-4 text-left">
+              <button className="self-end" onClick={toggleMenu}>X</button>
+              <p>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                Laborum, quidem cum officia consequuntur recusandae odio aperiam
+                autem? Consequuntur pariatur, sequi impedit facilis, molestias,
+                alias labore fugit corrupti natus quasi aliquid!
+              </p>
+              <p>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                Laborum, quidem cum officia consequuntur recusandae odio aperiam
+                autem? Consequuntur pariatur, sequi impedit facilis, molestias,
+                alias labore fugit corrupti natus quasi aliquid!
+              </p>
             </div>
           </div>
         )}

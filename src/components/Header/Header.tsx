@@ -20,9 +20,9 @@ const Header = ({ children, restart, variant, setNavbarOpen }: HeaderProps) => {
     <header className="w-full border-b-2 border-white">
       <nav className="flex justify-between w-full">
         <div className="flex items-center">
-          <IoIosSettings />
-          <p className="text-md">
-            <img alt="icon" src={logo} className="w-16 h-16" />
+          {/* <IoIosSettings /> */}
+          <p className="text-4xl">
+            26Pairs
           </p>
         </div>
         {children}
