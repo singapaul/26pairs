@@ -3,7 +3,7 @@ import { useState, useRef } from "react";
 import { AiOutlineQuestionCircle } from "react-icons/ai";
 
 export type TadaPopupProps = {
-  show?: boolean;
+  show: boolean;
   score: number;
   moves: number;
 };
