@@ -12,14 +12,12 @@ import { mainCardsLite } from "../../data/Simpsonslite";
 // @ts-ignore
 import { mainCards } from "../../data/Simpsons";
 
-
-
-
 export type GameProps = {
   version: "classic" | "lite";
+  deck: any;
 };
 
-const Game = ({ version }: GameProps) => {
+const Game = ({ version, deck }: GameProps) => {
   const initValBestScore = () => {
     // if (typeof window !== "undefined") {
     //   // @ts-ignore
@@ -30,14 +28,15 @@ const Game = ({ version }: GameProps) => {
     // }
   };
 
-  let uniqueElementsArray: any;
-  if (version === "classic") {
-    uniqueElementsArray = mainCards.concat(mainCards);
-  } else if (version === "lite") {
-    uniqueElementsArray = mainCardsLite.concat(mainCardsLite);
-  }
+  useEffect(() => {
+    if (version === "classic") {
+      setCards(shuffle(deck.concat(deck)));
+    } else if (version === "lite") {
+      setCards(shuffle(mainCardsLite.concat(mainCardsLite)));
+    }
+  }, [deck]);
 
-  const [cards, setCards] = useState(shuffle(uniqueElementsArray));
+  const [cards, setCards] = useState();
   const [openCards, setOpenCards] = useState([]);
   const [clearedCards, setClearedCards] = useState({});
   const [shouldDisableAllCards, setShouldDisableAllCards] = useState(false);
@@ -46,7 +45,6 @@ const Game = ({ version }: GameProps) => {
   const [resetTime, setResetTime] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [isPause, setIsPause] = useState(false);
-  const [showAboutModal, setShowAboutModal] = useState(false);
   const [bestScore, setBestScore] = useState(initValBestScore());
 
   const timeout = useRef(null);
@@ -81,15 +79,14 @@ const Game = ({ version }: GameProps) => {
     reset();
     setShouldDisableAllCards(false);
     // set a shuffled deck of cards
-    setCards(shuffle(uniqueElementsArray));
+    setCards(shuffle(cards));
   };
 
   const checkCompletion = () => {
-    if (Object.keys(clearedCards).length === uniqueElementsArray.length / 2) {
+    if (Object.keys(clearedCards).length === deck.length) {
       setShowModal(true);
-      // stopTimer();
-      console.log("game completed");
-      // setIsRunning(false);
+      stopTimer();
+      setIsRunning(false);
       setIsPause(true);
       alert("Placeholder: game completed");
       // @ts-ignore
@@ -104,12 +101,12 @@ const Game = ({ version }: GameProps) => {
   };
 
   const evaluate = () => {
-    console.log("evaluation function called");
     // Each time a second card is selected this function is called from a useEffect
     const [first, second] = openCards;
     enable();
-
+    // @ts-ignore
     if (cards[first].type === cards[second].type) {
+      // @ts-ignore
       setClearedCards((prev) => ({ ...prev, [cards[first].type]: true }));
       setOpenCards([]);
       return;
@@ -129,7 +126,6 @@ const Game = ({ version }: GameProps) => {
       // @ts-ignore
       setOpenCards((prev) => [...prev, index]);
       setMoves((moves) => moves + 1);
-
       disable();
     } else {
       // @ts-ignore
@@ -167,25 +163,9 @@ const Game = ({ version }: GameProps) => {
     setShouldDisableAllCards(false);
   };
 
-  // logic to handle open/close of the menu
-
-  const [navbarOpen, setNavbarOpen] = useState(false);
-
-  // Popup open close:
-
-  const [showPopup, setShowPopup] = useState(false);
-  const handleClosePopup = () => {
-    setShowPopup(false);
-  };
-
   return (
     <Layout>
-      <Header
-        restart={handleRestart}
-        variant="game"
-        navbarOpen={navbarOpen}
-        setNavbarOpen={setNavbarOpen}
-      >
+      <Header restart={handleRestart} variant="game">
         <Timer
           isRunning={isRunning}
           moves={moves}
@@ -194,20 +174,22 @@ const Game = ({ version }: GameProps) => {
         />
       </Header>
       <Gameboard>
-        {cards.map((card: any, index: any) => {
-          return (
-            <Card
-              key={index}
-              card={card}
-              index={index}
-              isDisabled={shouldDisableAllCards}
-              isInactive={checkIsInactive(card)}
-              isFlipped={checkIsFlipped(index)}
-              onClick={handleCardClick}
-              version={version}
-            />
-          );
-        })}
+        {cards &&
+        // @ts-ignore
+          cards.map((card: any, index: any) => {
+            return (
+              <Card
+                key={index}
+                card={card}
+                index={index}
+                isDisabled={shouldDisableAllCards}
+                isInactive={checkIsInactive(card)}
+                isFlipped={checkIsFlipped(index)}
+                onClick={handleCardClick}
+                version={version}
+              />
+            );
+          })}
       </Gameboard>
     </Layout>
   );
