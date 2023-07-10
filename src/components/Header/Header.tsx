@@ -1,11 +1,9 @@
 import React from "react";
 import { ReactNode } from "react";
-// @ts-ignore
-import logo from "../../assets/images/icon.png";
 import AboutPopup from "../AboutPopup";
 import SettingsPopup from "../SettingsPopup";
 import StatsPopup from "../StatsPopup";
-import { IoIosSettings } from "react-icons/io";
+
 
 export type HeaderProps = {
   children?: ReactNode;

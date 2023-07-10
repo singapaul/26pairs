@@ -2,14 +2,25 @@
 
 ## To do list
 
-1. About how to play the game section
-2. Completed Game Pop up
-3. Switch away from Simpsons
-4. Statistics Pop up
-5. Contentful hookup
-6. Dark Mode
-7. Switch between decks
-8. Side Menu
+10-14 July Mini Sprint
+
+1. About game dialog (this first)
+2. Settings Menu and functionality (get theme from CMS)
+3. Stats Menu functionality with local storage
+
+4. CMS integrattion
+
+5. About how to play the game section
+6. Completed Game Pop up
+7. Switch away from Simpsons
+8. Statistics Pop up
+9. integrate classNames to abstract out the colors and font classes
+10. Contentful hookup
+11. Dark Mode
+12. Move time to top level (game and access with use context)
+13. Switch between decks
+14. Side Menu
+15. Fix timer at game completion - done
 
 - set up local storage for game statistics
 - address whatsapp bugs

@@ -5,6 +5,7 @@ import Card from "../Card";
 import Gameboard from "../Gameboard";
 import Timer from "../Timer";
 import Layout from "../Layout";
+import TadaPopup from "../TadaPopup";
 // @ts-ignore
 import { shuffle } from "../../utils/shuffle";
 // @ts-ignore
@@ -32,6 +33,7 @@ const Game = ({ version, deck }: GameProps) => {
     if (version === "classic") {
       setCards(shuffle(deck.concat(deck)));
     } else if (version === "lite") {
+      // update later
       setCards(shuffle(mainCardsLite.concat(mainCardsLite)));
     }
   }, [deck]);
@@ -43,11 +45,15 @@ const Game = ({ version, deck }: GameProps) => {
   const [moves, setMoves] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
   const [resetTime, setResetTime] = useState(false);
-  const [showModal, setShowModal] = useState(false);
   const [isPause, setIsPause] = useState(false);
   const [bestScore, setBestScore] = useState(initValBestScore());
+  const [showTada, setShowTada] = useState(false);
 
   const timeout = useRef(null);
+
+  const completedGamePrompt = () => {
+    setShowTada(true);
+  };
 
   const startTimer = () => {
     setResetTime(false);
@@ -70,10 +76,10 @@ const Game = ({ version, deck }: GameProps) => {
   };
 
   const handleRestart = () => {
+    setShowTada(false)
     setIsPause(false);
     setClearedCards({});
     setOpenCards([]);
-    setShowModal(false);
     setMoves(0);
     stopTimer();
     reset();
@@ -84,11 +90,8 @@ const Game = ({ version, deck }: GameProps) => {
 
   const checkCompletion = () => {
     if (Object.keys(clearedCards).length === deck.length) {
-      setShowModal(true);
-      stopTimer();
-      setIsRunning(false);
       setIsPause(true);
-      alert("Placeholder: game completed");
+      completedGamePrompt();
       // @ts-ignore
       const highScore = Math.min(moves, bestScore);
       // setBestScore(highScore);
@@ -175,7 +178,7 @@ const Game = ({ version, deck }: GameProps) => {
       </Header>
       <Gameboard>
         {cards &&
-        // @ts-ignore
+          // @ts-ignore
           cards.map((card: any, index: any) => {
             return (
               <Card
@@ -191,6 +194,12 @@ const Game = ({ version, deck }: GameProps) => {
             );
           })}
       </Gameboard>
+      <TadaPopup
+        show={showTada}
+        time={2}
+        moves={moves}
+        handleRestart={handleRestart}
+      />
     </Layout>
   );
 };

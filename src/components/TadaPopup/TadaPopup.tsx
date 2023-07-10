@@ -4,11 +4,12 @@ import { AiOutlineQuestionCircle } from "react-icons/ai";
 
 export type TadaPopupProps = {
   show: boolean;
-  score: number;
+  time: number;
   moves: number;
+  handleRestart: () => void;
 };
 
-const TadaPopup = ({ show, score, moves }: TadaPopupProps) => {
+const TadaPopup = ({ show, time, moves, handleRestart }: TadaPopupProps) => {
   return (
     <>
       <div className="relative">
@@ -29,6 +30,7 @@ const TadaPopup = ({ show, score, moves }: TadaPopupProps) => {
               <p>
                Well done you beat the game
               </p>
+              <button onClick={handleRestart}>Restart</button>
             </div>
           </div>
         )}
