@@ -13,7 +13,7 @@ export type HeaderProps = {
   setNavbarOpen?: any;
 };
 
-const Header = ({ children, restart, variant, setNavbarOpen }: HeaderProps) => {
+const Header = ({ children }: HeaderProps) => {
   return (
     <header className="w-full border-b-2 border-white">
       <nav className="flex justify-between w-full">
