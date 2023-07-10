@@ -1,6 +1,8 @@
 import React from "react";
 import { useState, useRef } from "react";
 import { IoIosStats } from "react-icons/io";
+import ListItem from "../ListItem";
+import PopupContent from "../PopupContent";
 
 export type StatsPopupProps = {
   show?: boolean;
@@ -25,26 +27,29 @@ const StatsPopup = ({ show, onClose }: StatsPopupProps) => {
         </button>
 
         {isOpen && (
-          <div className="fixed inset-0 flex items-center justify-center z-50">
+          <div className="fixed inset-0 flex items-center justify-center z-50 w-full">
             {/* The overlay */}
             <div
               onClick={toggleMenu}
               className="fixed inset-0 bg-black opacity-50"
             ></div>
             {/* The menu */}
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white w-48 py-2 rounded-md shadow-lg transition-transform duration-300">
-              <ul className="py-2">
-                <li className="px-4 py-2 hover:bg-blue-100 cursor-pointer">
-                  Stats stuff
-                </li>
-                <li className="px-4 py-2 hover:bg-blue-100 cursor-pointer">
-                  Option 2
-                </li>
-                <li className="px-4 py-2 hover:bg-blue-100 cursor-pointer">
-                  Option 3
+            <PopupContent title={"Stats"} onClose={toggleMenu}>
+              <ul className="">
+                <ListItem variant={"stat"} title={"Best Moves"} stat={18} />
+                <ListItem variant={"stat"} title={"Best Time"} stat={"10:13"} />
+                <ListItem variant={"stat"} title={"Games Played"} stat={43} />
+                <ListItem
+                  variant={"stat"}
+                  title={"Average time"}
+                  stat={"18:03"}
+                />
+                <ListItem variant={"stat"} title={"Average moves"} stat={56} />
+                <li className="text-xs text-neutral-500 pt-1">
+                  2023 26Pairs ltd
                 </li>
               </ul>
-            </div>
+            </PopupContent>
           </div>
         )}
       </div>

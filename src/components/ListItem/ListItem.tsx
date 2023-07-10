@@ -2,12 +2,13 @@ import React from "react";
 import { useState } from "react";
 
 export type ListItemProps = {
-  variant: "toggle" | "link";
+  variant: "toggle" | "link" | "stat";
   title: string;
   subtitle?: string;
   onToggle?: () => void;
   linkText?: string;
   link?: string;
+  stat?: string | number;
 };
 
 const ToggleElement = () => {
@@ -41,6 +42,7 @@ const ListItem = ({
   title,
   subtitle,
   onToggle,
+  stat,
   linkText,
   link,
 }: ListItemProps) => {
@@ -53,10 +55,12 @@ const ListItem = ({
         </span>
         {variant == "toggle" ? (
           <ToggleElement />
-        ) : (
+        ) : variant == "link" ? (
           <a href={link} target="_blank" rel="noopener noreferrer">
             {linkText}
           </a>
+        ) : (
+          <p>{stat}</p>
         )}
       </div>
     </li>

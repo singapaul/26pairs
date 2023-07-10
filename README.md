@@ -7,20 +7,21 @@
 1. About game dialog (this first)
 2. Settings Menu and functionality (get theme from CMS)
 3. Stats Menu functionality with local storage
-
 4. CMS integrattion
+5. Social Share
 
-5. About how to play the game section
-6. Completed Game Pop up
-7. Switch away from Simpsons
-8. Statistics Pop up
-9. integrate classNames to abstract out the colors and font classes
-10. Contentful hookup
-11. Dark Mode
-12. Move time to top level (game and access with use context)
-13. Switch between decks
-14. Side Menu
-15. Fix timer at game completion - done
+6. About how to play the game section
+7. Completed Game Pop up
+
+8. Switch away from Simpsons
+9. Statistics Pop up
+10. integrate classNames to abstract out the colors and font classes
+11. Contentful hookup
+12. Dark Mode
+13. Move time to top level (game and access with use context)
+14. Switch between decks
+15. Side Menu
+16. Fix timer at game completion - done
 
 - set up local storage for game statistics
 - address whatsapp bugs

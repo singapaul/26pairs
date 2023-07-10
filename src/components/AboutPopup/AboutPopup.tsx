@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useRef } from "react";
 import { AiOutlineQuestionCircle } from "react-icons/ai";
+import PopupContent from "../PopupContent";
 
 export type AboutPopupProps = {
   show?: boolean;
@@ -32,21 +33,20 @@ const AboutPopup = ({ show, onClose }: AboutPopupProps) => {
               className="fixed inset-0 bg-black opacity-50"
             ></div>
             {/* The menu */}
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white w-48 py-2 rounded-md shadow-lg transition-transform duration-300 w-80 text-black flex flex-col p-4 text-left">
-              <button className="self-end" onClick={toggleMenu}>X</button>
+
+            <PopupContent title={"About"} onClose={toggleMenu}>
               <p>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                Laborum, quidem cum officia consequuntur recusandae odio aperiam
-                autem? Consequuntur pariatur, sequi impedit facilis, molestias,
-                alias labore fugit corrupti natus quasi aliquid!
+                Match all of the pairs as fast as you can to win the game.
+                Complete the game in as short a time and in as few moves as
+                possible.
               </p>
+              <br/>
               <p>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                Laborum, quidem cum officia consequuntur recusandae odio aperiam
-                autem? Consequuntur pariatur, sequi impedit facilis, molestias,
-                alias labore fugit corrupti natus quasi aliquid!
+                Click on an a card to reveal the other side. Share your results
+                and beat your friends!{" "}
               </p>
-            </div>
+              <p className="text-xs text-neutral-500 pt-1">2023 26Pairs ltd</p>
+            </PopupContent>
           </div>
         )}
       </div>
