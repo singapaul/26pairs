@@ -8,12 +8,12 @@ export type TimerProps = {
 
 const Timer = ({ moves = 0, minutes, seconds }: TimerProps) => {
   return (
-    <div className="flex bg-neutral-500 gap-2 border-2 border-orange-50 rounded p-4 my-3">
+    <div className="flex bg-neutral-500 gap-1 border-2 border-orange-50 rounded p-2 my-3">
       <div>
         <h2>Moves</h2>
         <p>{moves}</p>
       </div>
-      <div className="flex flex-col items-end w-20">
+      <div className="flex flex-col items-end w-12">
         <h2>Time</h2>
         <p className="">
           {minutes.toString().padStart(2, "0")}:

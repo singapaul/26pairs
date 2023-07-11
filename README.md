@@ -12,7 +12,7 @@
 
 issues
 
-- CSS issue overflowing
+- CSS issue overflowing - DONE
 - Game completion prompt (stats & social share (clipboard link)
 
 6. About how to play the game section - DONE

@@ -40,8 +40,8 @@ const AboutPopup = ({ show, onClose }: AboutPopupProps) => {
                 Complete the game in as short a time and in as few moves as
                 possible.
               </p>
-              <br/>
-              <p>
+              <br />
+              <p className="border-b-2 borer-white">
                 Click on an a card to reveal the other side. Share your results
                 and beat your friends!{" "}
               </p>
