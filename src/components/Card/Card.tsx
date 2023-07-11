@@ -14,7 +14,7 @@ export type CardProps = {
   isFlipped: any;
   isDisabled: any;
   version: "classic" | "lite";
-  cardBack: any;
+  cardBack?: any;
 };
 
 const Card = ({
@@ -25,14 +25,12 @@ const Card = ({
   isFlipped,
   isDisabled,
   version,
-  cardBack,
+  cardBack = back,
 }: CardProps) => {
   const handleClick = () => {
     !isFlipped && !isDisabled && onClick(index);
   };
 
-  console.log("ello");
-  console.log(cardBack);
   return (
     <div
       className={classnames("card", {
