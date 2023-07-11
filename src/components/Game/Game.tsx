@@ -35,6 +35,19 @@ const Game = ({ version, deck, cardBack }: GameProps) => {
     }
   }, [deck]);
 
+  const gamesPlayed = () => {
+    if (localStorage.getItem("scoreHistory") == null) {
+      //
+      setGamesPlayedStat(0);
+      // return 0;
+    }
+    const datta = localStorage.getItem("scoreHistory");
+    // @ts-ignore
+    const fda = JSON.parse(datta);
+    setGamesPlayedStat(fda.length);
+    // return fda.length;
+  };
+
   const [cards, setCards] = useState();
   const [openCards, setOpenCards] = useState([]);
   const [clearedCards, setClearedCards] = useState({});
@@ -44,7 +57,9 @@ const Game = ({ version, deck, cardBack }: GameProps) => {
   const [resetTime, setResetTime] = useState(false);
   const [isPause, setIsPause] = useState(false);
   const [bestScore, setBestScore] = useState(initValBestScore());
+  const [time, setTime] = useState(0);
   const [showTada, setShowTada] = useState(false);
+  const [gamesPlayedStat, setGamesPlayedStat] = useState(0);
 
   const timeout = useRef(null);
 
@@ -96,6 +111,32 @@ const Game = ({ version, deck, cardBack }: GameProps) => {
         // @ts-ignore
         // Save the game to the array
         localStorage.setItem("bestMoves", moves.toString());
+        // Log the score from the current game
+        logLatestStats();
+      }
+    }
+  };
+
+  const logLatestStats = () => {
+    if (typeof window !== "undefined") {
+      if (localStorage.getItem("scoreHistory") == null) {
+        // Write new value
+        const firstVal = [{ time: time.toString(), moves: moves.toString() }];
+        const initialiseValues = JSON.stringify(firstVal);
+        localStorage.setItem("scoreHistory", initialiseValues);
+      } else {
+        // get the current value, add to it and resave
+        const val = localStorage.getItem("scoreHistory");
+        const newScore = {
+          time: time.toString(),
+          moves: moves.toString(),
+        };
+        // @ts-ignore
+        const valT = JSON.parse(val);
+        valT.push(newScore);
+        const updatedScores = JSON.stringify(valT);
+        console.log(updatedScores);
+        localStorage.setItem("scoreHistory", updatedScores);
       }
     }
   };
@@ -163,33 +204,34 @@ const Game = ({ version, deck, cardBack }: GameProps) => {
     setShouldDisableAllCards(false);
   };
 
-  const writeStorage = () => {
-    localStorage.setItem("Best Moves", "2");
-    localStorage.setItem("Best Time", "2");
-    localStorage.setItem("Games Played", "2");
-    const gamePlayed = [{ time: 2, moves: 43 }];
-    const stringData = JSON.stringify(gamePlayed);
-    localStorage.setItem("Record", stringData);
-  };
-
-  const getStorage = () => {
-    console.log(localStorage.getItem("Best Moves"));
+  useEffect(() => {
     // @ts-ignore
-    console.log(JSON.parse(localStorage.getItem("Record")));
-  };
+    let intervalId;
+    if (isRunning && !isPause) {
+      // setting time from 0 to 1 every 10 milisecond using javascript setInterval method
+      intervalId = setInterval(() => setTime(time + 1), 10);
+    }
+
+    // @ts-ignore
+    return () => clearInterval(intervalId);
+  }, [isRunning, time]);
+
+  useEffect(() => {
+    setTime(0);
+  }, [resetTime, isRunning]);
+
+  // Minutes calculation
+  const minutes = Math.floor((time % 360000) / 6000);
+  // Seconds calculation
+  const seconds = Math.floor((time % 6000) / 100);
+  // Milliseconds calculation
+  const milliseconds = time % 100;
 
   return (
     <Layout>
       <Header restart={handleRestart} variant="game">
-        <Timer
-          isRunning={isRunning}
-          moves={moves}
-          resetTime={resetTime}
-          isPause={isPause}
-        />
+        <Timer moves={moves} minutes={minutes} seconds={seconds} />
       </Header>
-      <button onClick={writeStorage}>Write</button>
-      <button onClick={getStorage}>Get</button>
       <Gameboard>
         {cards &&
           // @ts-ignore

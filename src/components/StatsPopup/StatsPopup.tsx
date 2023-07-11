@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState, useRef } from "react";
 import { IoIosStats } from "react-icons/io";
 import ListItem from "../ListItem";
@@ -12,12 +12,80 @@ export type StatsPopupProps = {
 const StatsPopup = ({ show, onClose }: StatsPopupProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef(null);
+  const [gamesPlayed, setGamesPlayed] = useState(0);
+  const [averageMoves, setAverageMoves] = useState(0);
+  const [averageTime, setaverageTime] = useState("0");
+  const [bestTime, setBestTime] = useState("0");
+  const [bestMoves, setBestMoves] = useState(0);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
+    // @ts-ignore
   };
 
-  // get the values from local storage
+  const getGameStats = () => {
+    const val = localStorage.getItem("scoreHistory");
+    if (val == null) {
+      setGamesPlayed(0);
+      setAverageMoves(0);
+      setaverageTime("0");
+      return;
+    }
+    const gameCount = JSON.parse(val);
+    let totalTime = 0;
+    let totalMoves = 0;
+    for (var i = 0; i < gameCount.length; i++) {
+      totalMoves += Number(gameCount[i].moves);
+      totalTime += Number(gameCount[i].time);
+    }
+    setGamesPlayed(gameCount.length);
+    setAverageMoves(Math.round(totalMoves / gameCount.length));
+    // convert the time into a string
+    const avgTime = totalTime / gameCount.length;
+    // Minutes calculation
+    const minutes = Math.floor((avgTime % 360000) / 6000).toString();
+    // Seconds calculation
+    const seconds = Math.floor((avgTime % 6000) / 100).toString();
+
+    const finTime = `${minutes}:${seconds}`;
+    setaverageTime(finTime);
+  };
+
+  const getBestTime = () => {
+    let lowestTime = Number.MAX_VALUE;
+    const val = localStorage.getItem("scoreHistory");
+    // @ts-ignore
+    const TimeArray = JSON.parse(val);
+    // @ts-ignore
+    TimeArray.forEach((element) => {
+      console.log(element.time);
+      if (element.time < lowestTime) {
+        lowestTime = element.moves;
+        console.log(lowestTime);
+      }
+    });
+    setBestTime(lowestTime.toString());
+  };
+
+  const getBestMoves = () => {
+    let lowestMoves = Number.MAX_VALUE;
+    const val = localStorage.getItem("scoreHistory");
+    // @ts-ignore
+    const DataArray = JSON.parse(val);
+    // @ts-ignore
+    DataArray.forEach((element) => {
+      if (element.moves < lowestMoves) {
+        lowestMoves = element.moves;
+      }
+    });
+    setBestMoves(lowestMoves);
+  };
+
+  useEffect(() => {
+    getGameStats();
+    // getBestTime();
+    // getBestMoves();
+  }, [show]);
 
   return (
     <>
@@ -38,15 +106,23 @@ const StatsPopup = ({ show, onClose }: StatsPopupProps) => {
             {/* The menu */}
             <PopupContent title={"Stats"} onClose={toggleMenu}>
               <ul className="">
-                <ListItem variant={"stat"} title={"Best Moves"} stat={localStorage.getItem("bestMoves") || 0} />
-                <ListItem variant={"stat"} title={"Best Time"} stat={"10:13"} />
-                <ListItem variant={"stat"} title={"Games Played"} stat={43} />
+                <ListItem variant={"stat"} title={"Best Moves"} stat={"TBC"} />
+                <ListItem variant={"stat"} title={"Best Time"} stat={"TBC"} />
+                <ListItem
+                  variant={"stat"}
+                  title={"Games Played"}
+                  stat={gamesPlayed}
+                />
                 <ListItem
                   variant={"stat"}
                   title={"Average time"}
-                  stat={"18:03"}
+                  stat={averageTime}
                 />
-                <ListItem variant={"stat"} title={"Average moves"} stat={56} />
+                <ListItem
+                  variant={"stat"}
+                  title={"Average moves"}
+                  stat={averageMoves}
+                />
                 <li className="text-xs text-neutral-500 pt-1">
                   2023 26Pairs ltd
                 </li>
