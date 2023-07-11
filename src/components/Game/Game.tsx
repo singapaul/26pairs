@@ -16,11 +16,21 @@ export type GameProps = {
 };
 
 const Game = ({ version, deck, cardBack }: GameProps) => {
-  const initValBestScore = () => {
+  const initValBestMoves = () => {
     if (typeof window !== "undefined") {
       // @ts-ignore
-      JSON.parse(localStorage.getItem("bestScore")) || Number.POSITIVE_INFINITY;
-      return;
+      JSON.parse(Number(localStorage.getItem("bestMoves"))) ||
+        Number.POSITIVE_INFINITY;
+    } else {
+      return 0;
+    }
+  };
+
+  const initValBestTime = () => {
+    if (typeof window !== "undefined") {
+      // @ts-ignore
+      JSON.parse(Number(localStorage.getItem("bestTime"))) ||
+        Number.POSITIVE_INFINITY;
     } else {
       return 0;
     }
@@ -56,7 +66,9 @@ const Game = ({ version, deck, cardBack }: GameProps) => {
   const [isRunning, setIsRunning] = useState(false);
   const [resetTime, setResetTime] = useState(false);
   const [isPause, setIsPause] = useState(false);
-  const [bestScore, setBestScore] = useState(initValBestScore());
+  // const [bestScore, setBestScore] = useState(initValBestS());
+  const [bestMoves, setBestMoves] = useState(initValBestMoves());
+  const [bestTime, setBestTime] = useState(initValBestTime());
   const [time, setTime] = useState(0);
   const [showTada, setShowTada] = useState(false);
   const [gamesPlayedStat, setGamesPlayedStat] = useState(0);
@@ -108,11 +120,46 @@ const Game = ({ version, deck, cardBack }: GameProps) => {
       // setBestScore(highScore);
       // ts-ignore
       if (typeof window !== "undefined") {
-        // @ts-ignore
-        // Save the game to the array
-        localStorage.setItem("bestMoves", moves.toString());
         // Log the score from the current game
         logLatestStats();
+        // Check moves and update local storage if needed
+        checkMovesStorage();
+        // Check time and update local storage if needed
+        checkTimeStorage();
+      }
+    }
+  };
+
+  const checkMovesStorage = () => {
+    if (typeof window !== "undefined") {
+      if (localStorage.getItem("bestMoves") == null) {
+        const initialiseValues = JSON.stringify(moves);
+        localStorage.setItem("bestMoves", initialiseValues);
+      } else {
+        // get the current value, add to it and resave
+        const val = localStorage.getItem("bestMoves");
+        const valNumber = Number(val);
+        if (valNumber > moves) {
+          const newLow = JSON.stringify(moves);
+          localStorage.setItem("bestMoves", newLow);
+        }
+      }
+    }
+  };
+
+  const checkTimeStorage = () => {
+    if (typeof window !== "undefined") {
+      if (localStorage.getItem("bestTime") == null) {
+        const initialiseValues = JSON.stringify(time);
+        localStorage.setItem("bestTime", initialiseValues);
+      } else {
+        // get the current value, add to it and resave
+        const val = localStorage.getItem("bestTime");
+        const valNumber = Number(val);
+        if (valNumber > time) {
+          const newLow = JSON.stringify(time);
+          localStorage.setItem("bestTime", newLow);
+        }
       }
     }
   };
@@ -135,7 +182,6 @@ const Game = ({ version, deck, cardBack }: GameProps) => {
         const valT = JSON.parse(val);
         valT.push(newScore);
         const updatedScores = JSON.stringify(valT);
-        console.log(updatedScores);
         localStorage.setItem("scoreHistory", updatedScores);
       }
     }

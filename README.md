@@ -4,13 +4,18 @@
 
 10-14 July Mini Sprint
 
-1. About game dialog (this first)
+1. About game dialog (this first) - DONE
 2. Settings Menu and functionality (get theme from CMS)
-3. Stats Menu functionality with local storage
-4. CMS integrattion
+3. Stats Menu functionality with local storage - DONE
+4. CMS integrattion- DONE
 5. Social Share
 
-6. About how to play the game section
+issues
+
+- CSS issue overflowing
+- Game completion prompt (stats & social share (clipboard link)
+
+6. About how to play the game section - DONE
 7. Completed Game Pop up
 
 - setup environment variables for the CMS.

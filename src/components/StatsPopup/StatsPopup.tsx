@@ -15,7 +15,7 @@ const StatsPopup = ({ show, onClose }: StatsPopupProps) => {
   const [gamesPlayed, setGamesPlayed] = useState(0);
   const [averageMoves, setAverageMoves] = useState(0);
   const [averageTime, setaverageTime] = useState("0");
-  const [bestTime, setBestTime] = useState("0");
+  const [bestTime, setBestTime] = useState(0);
   const [bestMoves, setBestMoves] = useState(0);
 
   const toggleMenu = () => {
@@ -52,39 +52,63 @@ const StatsPopup = ({ show, onClose }: StatsPopupProps) => {
   };
 
   const getBestTime = () => {
-    let lowestTime = Number.MAX_VALUE;
-    const val = localStorage.getItem("scoreHistory");
-    // @ts-ignore
-    const TimeArray = JSON.parse(val);
-    // @ts-ignore
-    TimeArray.forEach((element) => {
-      console.log(element.time);
-      if (element.time < lowestTime) {
-        lowestTime = element.moves;
-        console.log(lowestTime);
+    if (typeof window !== "undefined") {
+      if (localStorage.getItem("bestTime") == null) {
+        console.log("no value");
+      } else {
+        // @ts-ignore
+        setBestTime(localStorage.getItem("bestTime"));
+        // @todo will need to convert format later
       }
-    });
-    setBestTime(lowestTime.toString());
+    }
   };
 
   const getBestMoves = () => {
-    let lowestMoves = Number.MAX_VALUE;
-    const val = localStorage.getItem("scoreHistory");
-    // @ts-ignore
-    const DataArray = JSON.parse(val);
-    // @ts-ignore
-    DataArray.forEach((element) => {
-      if (element.moves < lowestMoves) {
-        lowestMoves = element.moves;
+    if (typeof window !== "undefined") {
+      if (localStorage.getItem("bestMoves") == null) {
+        console.log("no value");
+      } else {
+        // @ts-ignore
+        setBestMoves(localStorage.getItem("bestMoves"));
+        // @todo will need to convert format later
       }
-    });
-    setBestMoves(lowestMoves);
+    }
   };
+
+  // const getBestTime = () => {
+  //   let lowestTime = Number.MAX_VALUE;
+  //   const val = localStorage.getItem("scoreHistory");
+  //   // @ts-ignore
+  //   const TimeArray = JSON.parse(val);
+  //   // @ts-ignore
+  //   TimeArray.forEach((element) => {
+  //     console.log(element.time);
+  //     if (element.time < lowestTime) {
+  //       lowestTime = element.moves;
+  //       console.log(lowestTime);
+  //     }
+  //   });
+  //   setBestTime(lowestTime.toString());
+  // };
+
+  // const getBestMoves = () => {
+  //   let lowestMoves = Number.MAX_VALUE;
+  //   const val = localStorage.getItem("scoreHistory");
+  //   // @ts-ignore
+  //   const DataArray = JSON.parse(val);
+  //   // @ts-ignore
+  //   DataArray.forEach((element) => {
+  //     if (element.moves < lowestMoves) {
+  //       lowestMoves = element.moves;
+  //     }
+  //   });
+  //   setBestMoves(lowestMoves);
+  // };
 
   useEffect(() => {
     getGameStats();
-    // getBestTime();
-    // getBestMoves();
+    getBestTime();
+    getBestMoves();
   }, [show]);
 
   return (
@@ -106,8 +130,17 @@ const StatsPopup = ({ show, onClose }: StatsPopupProps) => {
             {/* The menu */}
             <PopupContent title={"Stats"} onClose={toggleMenu}>
               <ul className="">
-                <ListItem variant={"stat"} title={"Best Moves"} stat={"TBC"} />
-                <ListItem variant={"stat"} title={"Best Time"} stat={"TBC"} />
+                <ListItem
+                  variant={"stat"}
+                  title={"Best Moves"}
+                  // @ts-ignore
+                  stat={bestMoves}
+                />
+                <ListItem
+                  variant={"stat"}
+                  title={"Best Time"}
+                  stat={bestTime}
+                />
                 <ListItem
                   variant={"stat"}
                   title={"Games Played"}

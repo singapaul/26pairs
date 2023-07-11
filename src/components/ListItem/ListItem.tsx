@@ -8,7 +8,7 @@ export type ListItemProps = {
   onToggle?: () => void;
   linkText?: string;
   link?: string;
-  stat?: string | number;
+  stat?: string | number | null;
 };
 
 const ToggleElement = () => {
