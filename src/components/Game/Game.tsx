@@ -17,13 +17,13 @@ export type GameProps = {
 
 const Game = ({ version, deck, cardBack }: GameProps) => {
   const initValBestScore = () => {
-    // if (typeof window !== "undefined") {
-    //   // @ts-ignore
-    //   JSON.parse(localStorage.getItem("bestScore")) || Number.POSITIVE_INFINITY;
-    //   return;
-    // } else {
-    //   return 0;
-    // }
+    if (typeof window !== "undefined") {
+      // @ts-ignore
+      JSON.parse(localStorage.getItem("bestScore")) || Number.POSITIVE_INFINITY;
+      return;
+    } else {
+      return 0;
+    }
   };
 
   useEffect(() => {
@@ -90,12 +90,12 @@ const Game = ({ version, deck, cardBack }: GameProps) => {
       setIsPause(true);
       completedGamePrompt();
       // @ts-ignore
-      const highScore = Math.min(moves, bestScore);
       // setBestScore(highScore);
       // ts-ignore
       if (typeof window !== "undefined") {
         // @ts-ignore
-        localStorage.setItem("bestScore", highScore.toString());
+        // Save the game to the array
+        localStorage.setItem("bestMoves", moves.toString());
       }
     }
   };
@@ -163,6 +163,21 @@ const Game = ({ version, deck, cardBack }: GameProps) => {
     setShouldDisableAllCards(false);
   };
 
+  const writeStorage = () => {
+    localStorage.setItem("Best Moves", "2");
+    localStorage.setItem("Best Time", "2");
+    localStorage.setItem("Games Played", "2");
+    const gamePlayed = [{ time: 2, moves: 43 }];
+    const stringData = JSON.stringify(gamePlayed);
+    localStorage.setItem("Record", stringData);
+  };
+
+  const getStorage = () => {
+    console.log(localStorage.getItem("Best Moves"));
+    // @ts-ignore
+    console.log(JSON.parse(localStorage.getItem("Record")));
+  };
+
   return (
     <Layout>
       <Header restart={handleRestart} variant="game">
@@ -173,6 +188,8 @@ const Game = ({ version, deck, cardBack }: GameProps) => {
           isPause={isPause}
         />
       </Header>
+      <button onClick={writeStorage}>Write</button>
+      <button onClick={getStorage}>Get</button>
       <Gameboard>
         {cards &&
           // @ts-ignore

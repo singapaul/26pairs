@@ -17,7 +17,6 @@ const Dropdown = ({ title, buttonArray }: DropdownProps) => {
 
   const handleButtonClick = (button: any) => {
     setSelectedButton(button);
-    console.log(selectedButton);
   };
 
   return (

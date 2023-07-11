@@ -18,7 +18,7 @@ const TadaPopup = ({ show, time, moves, handleRestart }: TadaPopupProps) => {
             {/* The overlay */}
             <div
               onClick={() => {
-                console.log("hello");
+               
               }}
               className="fixed inset-0 bg-black opacity-50"
             ></div>

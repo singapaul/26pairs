@@ -17,6 +17,8 @@ const StatsPopup = ({ show, onClose }: StatsPopupProps) => {
     setIsOpen(!isOpen);
   };
 
+  // get the values from local storage
+
   return (
     <>
       <div className="relative" ref={menuRef}>
@@ -36,7 +38,7 @@ const StatsPopup = ({ show, onClose }: StatsPopupProps) => {
             {/* The menu */}
             <PopupContent title={"Stats"} onClose={toggleMenu}>
               <ul className="">
-                <ListItem variant={"stat"} title={"Best Moves"} stat={18} />
+                <ListItem variant={"stat"} title={"Best Moves"} stat={localStorage.getItem("bestMoves") || 0} />
                 <ListItem variant={"stat"} title={"Best Time"} stat={"10:13"} />
                 <ListItem variant={"stat"} title={"Games Played"} stat={43} />
                 <ListItem

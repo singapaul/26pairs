@@ -1,14 +1,10 @@
-import { HeadFC, Link, graphql } from "gatsby";
+import { HeadFC, graphql } from "gatsby";
 import React from "react";
 import Game from "../components/Game";
 
 // @ts-ignore
 const WordPage = ({ data }: any) => {
   const { contentfulDeck } = data;
-
-  const { cards } = contentfulDeck;
-  console.log(contentfulDeck.backImage.url);
-  console.log(contentfulDeck.cards);
 
   return (
     <main>
@@ -17,7 +13,6 @@ const WordPage = ({ data }: any) => {
         deck={contentfulDeck.cards}
         cardBack={contentfulDeck.backImage.url}
       />
-      <p>hi</p>
     </main>
   );
 };

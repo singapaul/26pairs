@@ -56,7 +56,7 @@ const Footer = ({
       ),
       label: "Account",
       onClick: () => {
-        console.log("hello");
+       
       },
     },
     {
@@ -71,7 +71,7 @@ const Footer = ({
       ),
       label: "Settings",
       onClick: () => {
-        console.log("hello");
+      
       },
     },
     {
@@ -86,7 +86,7 @@ const Footer = ({
       ),
       label: "Help",
       onClick: () => {
-        console.log("hello");
+     
       },
     },
     {
