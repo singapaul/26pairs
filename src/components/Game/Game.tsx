@@ -8,17 +8,14 @@ import Layout from "../Layout";
 import TadaPopup from "../TadaPopup";
 // @ts-ignore
 import { shuffle } from "../../utils/shuffle";
-// @ts-ignore
-import { mainCardsLite } from "../../data/Simpsonslite";
-// @ts-ignore
-import { mainCards } from "../../data/Simpsons";
 
 export type GameProps = {
   version: "classic" | "lite";
   deck: any;
+  cardBack: any;
 };
 
-const Game = ({ version, deck }: GameProps) => {
+const Game = ({ version, deck, cardBack }: GameProps) => {
   const initValBestScore = () => {
     // if (typeof window !== "undefined") {
     //   // @ts-ignore
@@ -34,7 +31,7 @@ const Game = ({ version, deck }: GameProps) => {
       setCards(shuffle(deck.concat(deck)));
     } else if (version === "lite") {
       // update later
-      setCards(shuffle(mainCardsLite.concat(mainCardsLite)));
+      setCards(shuffle(deck.concat(deck)));
     }
   }, [deck]);
 
@@ -72,11 +69,11 @@ const Game = ({ version, deck }: GameProps) => {
   // @ts-ignore
   const checkIsInactive = (card) => {
     // @ts-ignore
-    return Boolean(clearedCards[card.type]);
+    return Boolean(clearedCards[card.id]);
   };
 
   const handleRestart = () => {
-    setShowTada(false)
+    setShowTada(false);
     setIsPause(false);
     setClearedCards({});
     setOpenCards([]);
@@ -108,9 +105,9 @@ const Game = ({ version, deck }: GameProps) => {
     const [first, second] = openCards;
     enable();
     // @ts-ignore
-    if (cards[first].type === cards[second].type) {
+    if (cards[first].id === cards[second].id) {
       // @ts-ignore
-      setClearedCards((prev) => ({ ...prev, [cards[first].type]: true }));
+      setClearedCards((prev) => ({ ...prev, [cards[first].id]: true }));
       setOpenCards([]);
       return;
     }
@@ -190,6 +187,7 @@ const Game = ({ version, deck }: GameProps) => {
                 isFlipped={checkIsFlipped(index)}
                 onClick={handleCardClick}
                 version={version}
+                cardBack={cardBack}
               />
             );
           })}

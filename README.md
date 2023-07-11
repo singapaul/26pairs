@@ -13,6 +13,8 @@
 6. About how to play the game section
 7. Completed Game Pop up
 
+- setup environment variables for the CMS.
+
 8. Switch away from Simpsons
 9. Statistics Pop up
 10. integrate classNames to abstract out the colors and font classes

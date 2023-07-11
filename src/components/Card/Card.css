@@ -47,8 +47,8 @@
 }
 
 .picture-front {
-  object-fit: cover;
-  max-height: 80%;
+  object-fit:cover;
+  /* max-height: 80%; */
 }
 
 .picture-back {

@@ -1,12 +1,25 @@
 import { HeadFC, Link, graphql } from "gatsby";
 import React from "react";
+import Game from "../components/Game";
 
 // @ts-ignore
 const WordPage = ({ data }: any) => {
   const { contentfulDeck } = data;
-  
 
-  return <div>{contentfulDeck.title}</div>;
+  const { cards } = contentfulDeck;
+  console.log(contentfulDeck.backImage.url);
+  console.log(contentfulDeck.cards);
+
+  return (
+    <main>
+      <Game
+        version={"classic"}
+        deck={contentfulDeck.cards}
+        cardBack={contentfulDeck.backImage.url}
+      />
+      <p>hi</p>
+    </main>
+  );
 };
 
 export default WordPage;
@@ -22,6 +35,7 @@ export const query = graphql`
       }
       cards {
         title
+        id
         image {
           url
         }

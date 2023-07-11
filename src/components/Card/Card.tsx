@@ -14,10 +14,9 @@ export type CardProps = {
   isFlipped: any;
   isDisabled: any;
   version: "classic" | "lite";
+  cardBack: any;
 };
 
-// @to-do pass the card a prop telling the component if you're playing classic (52) or premier league version (24)
-// so it takes a different CSS for sizing
 const Card = ({
   onClick,
   card,
@@ -26,10 +25,14 @@ const Card = ({
   isFlipped,
   isDisabled,
   version,
+  cardBack,
 }: CardProps) => {
   const handleClick = () => {
     !isFlipped && !isDisabled && onClick(index);
   };
+
+  console.log("ello");
+  console.log(cardBack);
   return (
     <div
       className={classnames("card", {
@@ -41,10 +44,18 @@ const Card = ({
       onClick={handleClick}
     >
       <div className="card-face card-font-face">
-        <img src={back} alt="pokeball" className="picture-back" />
+        <img
+          src={cardBack}
+          alt="Back of the playing card"
+          className="picture-back"
+        />
       </div>
       <div className="card-face card-back-face">
-        <img src={card.image} className="picture-front" alt="pokeball" />
+        <img
+          src={card.image.url}
+          className="picture-front"
+          alt="Front of the playing card"
+        />
       </div>
     </div>
   );
