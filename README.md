@@ -1,39 +1,18 @@
 # 26Pairs Development notes
 
+## 12th July Goals
+
+1. Settings Menu and functionality (get theme from CMS)
+2. Social Share
+3. Game completion prompt (stats & social share (clipboard link)
+
 ## To do list
 
-10-14 July Mini Sprint
-
-1. About game dialog (this first) - DONE
-2. Settings Menu and functionality (get theme from CMS)
-3. Stats Menu functionality with local storage - DONE
-4. CMS integrattion- DONE
-5. Social Share
-
-issues
-
-- CSS issue overflowing - DONE
-- Game completion prompt (stats & social share (clipboard link)
-
-6. About how to play the game section - DONE
-7. Completed Game Pop up
-
 - setup environment variables for the CMS.
-
-8. Switch away from Simpsons
-9. Statistics Pop up
-10. integrate classNames to abstract out the colors and font classes
-11. Contentful hookup
-12. Dark Mode
-13. Move time to top level (game and access with use context)
-14. Switch between decks
-15. Side Menu
-16. Fix timer at game completion - done
-
-- set up local storage for game statistics
-- address whatsapp bugs
-- Implement pop up for social sharing and about section
-- About/Rules pop up
+- integrate classNames to abstract out the colors and font classes
+- Dark Mode
+- Switch between decks
+- Side Menu
 - social share pop up
 - Implement Toast interface and social share (tinyURL?)
 - Card reveal at start functionality
@@ -48,16 +27,32 @@ https://www.gatsbyjs.com/plugins/gatsby-plugin-manifest/
 https://www.gatsbyjs.com/docs/progressive-web-app/
 
 - Integrate dark mode
-- Contenful integration
 - Vercel Web Analytics// Google Analytics : https://vercel.com/analytics
-
 - Set up 2-3 versions for card configs
-
 - Difficulty mode
 - Cross Browser support/testing
 - Google fonts/icons integration (see wordy)
 
 ## Done
+
+12/07
+
+11/07
+
+- Stats Menu functionality with local storage - DONE
+- CMS integrattion- DONE
+- About how to play the game section - DONE
+- Switch away from Simpsons
+- About game dialog (this first) - DONE
+- Contentful hookup
+- Statistics Pop up
+- Move time to top level (game and access with use context)
+- set up local storage for game statistics
+- address whatsapp bugs
+- Implement pop up for social sharing and about section
+- About/Rules pop up
+- Fix timer at game completion - done
+- CSS issue overflowing - DONE
 
 05/07
 
