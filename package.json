@@ -26,7 +26,6 @@
     "classnames": "^2.3.2",
     "gatsby": "^5.10.0",
     "gatsby-omni-font-loader": "^2.0.2",
-    "gatsby-plugin-dark-mode": "^1.1.2",
     "gatsby-plugin-google-gtag": "^5.10.0",
     "gatsby-plugin-image": "^3.10.0",
     "gatsby-plugin-manifest": "^5.10.0",

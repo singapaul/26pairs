@@ -20,18 +20,16 @@ const config: GatsbyConfig = {
         spaceId: "clau520o6xa1",
       },
     },
-    "gatsby-plugin-image",
-    "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
     "gatsby-plugin-postcss",
-    "gatsby-plugin-dark-mode",
+    "gatsby-plugin-image",
+    "gatsby-plugin-sharp",
     {
-      resolve: 'gatsby-plugin-use-dark-mode',
+      resolve: "gatsby-plugin-use-dark-mode",
       options: {
-        classNameDark: 'dark',
+        classNameDark: "dark",
       },
     },
-    // @to-do handle latter
     // https://www.gatsbyjs.com/plugins/gatsby-plugin-google-gtag/
     // "gatsby-plugin-google-gtag",
     {
