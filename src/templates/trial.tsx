@@ -10,12 +10,16 @@ const WordPage = ({ data }: any) => {
   const darkmode = useDarkMode(true);
 
   useEffect(() => {
+    
     const root = window.document.documentElement;
+    const docBody = window.document.body;
     if (darkmode.value == true) {
       // root.classList.remove("light");
       root.classList.add("dark");
-    } else {
+      docBody.classList.add("dark")
+    } else if (darkmode.value == false) {
       root.classList.remove("dark");
+      docBody.classList.remove("dark")
       // root.classList.add("light");
     }
   });
