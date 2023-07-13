@@ -1,15 +1,31 @@
 import React from "react";
-import { useState, useRef } from "react";
-import { AiOutlineQuestionCircle } from "react-icons/ai";
+import Button from "../Button";
+import PopupContent from "../PopupContent";
 
 export type TadaPopupProps = {
   show: boolean;
   time: number;
   moves: number;
   handleRestart: () => void;
+  closeTada: () => void;
 };
 
 const TadaPopup = ({ show, time, moves, handleRestart }: TadaPopupProps) => {
+  const copyContent = async () => {
+    try {
+      await navigator.clipboard.writeText(
+        `I completed 26Pairs!\nmoves:${moves}\ntime: ${time}`
+      );
+    } catch (err) {
+      console.error("Failed to copy: ", err);
+    }
+  };
+
+  // Minutes calculation
+  const minutes = Math.floor((time % 360000) / 6000);
+  // Seconds calculation
+  const seconds = Math.floor((time % 6000) / 100);
+
   return (
     <>
       <div className="relative">
@@ -17,21 +33,28 @@ const TadaPopup = ({ show, time, moves, handleRestart }: TadaPopupProps) => {
           <div className="fixed inset-0 flex items-center justify-center z-50">
             {/* The overlay */}
             <div
-              onClick={() => {
-               
-              }}
+              onClick={() => {}}
               className="fixed inset-0 bg-black opacity-50"
             ></div>
             {/* The menu */}
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white w-48 py-2 rounded-md shadow-lg transition-transform duration-300 w-80 text-black flex flex-col p-4 text-left">
-              <button className="self-end" onClick={()=> {}}>
-                X
-              </button>
+            <PopupContent title={"Completed"}>
               <p>
-               Well done you beat the game
+                Well done you beat the game in {moves} moves and in {minutes}:
+                {seconds}
               </p>
-              <button onClick={handleRestart}>Restart</button>
-            </div>
+              <div className="flex justify-around pt-2">
+                <Button
+                  text={"Restart"}
+                  variant="primary"
+                  handleClick={handleRestart}
+                />
+                <Button
+                  text={"Copy to clipboard"}
+                  variant="secondary"
+                  handleClick={copyContent}
+                />
+              </div>
+            </PopupContent>
           </div>
         )}
       </div>

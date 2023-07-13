@@ -75,35 +75,6 @@ const StatsPopup = ({ show, onClose }: StatsPopupProps) => {
     }
   };
 
-  // const getBestTime = () => {
-  //   let lowestTime = Number.MAX_VALUE;
-  //   const val = localStorage.getItem("scoreHistory");
-  //   // @ts-ignore
-  //   const TimeArray = JSON.parse(val);
-  //   // @ts-ignore
-  //   TimeArray.forEach((element) => {
-  //     console.log(element.time);
-  //     if (element.time < lowestTime) {
-  //       lowestTime = element.moves;
-  //       console.log(lowestTime);
-  //     }
-  //   });
-  //   setBestTime(lowestTime.toString());
-  // };
-
-  // const getBestMoves = () => {
-  //   let lowestMoves = Number.MAX_VALUE;
-  //   const val = localStorage.getItem("scoreHistory");
-  //   // @ts-ignore
-  //   const DataArray = JSON.parse(val);
-  //   // @ts-ignore
-  //   DataArray.forEach((element) => {
-  //     if (element.moves < lowestMoves) {
-  //       lowestMoves = element.moves;
-  //     }
-  //   });
-  //   setBestMoves(lowestMoves);
-  // };
 
   useEffect(() => {
     getGameStats();

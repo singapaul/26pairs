@@ -70,6 +70,7 @@ const Game = ({ version, deck, cardBack }: GameProps) => {
   const [bestMoves, setBestMoves] = useState(initValBestMoves());
   const [bestTime, setBestTime] = useState(initValBestTime());
   const [time, setTime] = useState(0);
+  // @todo update
   const [showTada, setShowTada] = useState(false);
   const [gamesPlayedStat, setGamesPlayedStat] = useState(0);
 
@@ -77,6 +78,10 @@ const Game = ({ version, deck, cardBack }: GameProps) => {
 
   const completedGamePrompt = () => {
     setShowTada(true);
+  };
+
+  const closeTada = () => {
+    setShowTada(false);
   };
 
   const startTimer = () => {
@@ -299,9 +304,10 @@ const Game = ({ version, deck, cardBack }: GameProps) => {
       </Gameboard>
       <TadaPopup
         show={showTada}
-        time={2}
+        time={time}
         moves={moves}
         handleRestart={handleRestart}
+        closeTada={closeTada}
       />
     </Layout>
   );

@@ -3,8 +3,6 @@
 ## 12th July Goals
 
 1. Settings Menu and functionality (get theme from CMS)
-2. Social Share
-3. Game completion prompt (stats & social share (clipboard link)
 
 ## To do list
 
@@ -35,7 +33,10 @@ https://www.gatsbyjs.com/docs/progressive-web-app/
 
 ## Done
 
-12/07
+13/07
+
+- Social Share
+- Game completion prompt (stats & social share (clipboard link)
 
 11/07
 
