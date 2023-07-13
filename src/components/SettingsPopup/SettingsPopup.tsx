@@ -41,7 +41,7 @@ const SettingsPopup = ({ show, onClose }: SettingsPopupProps) => {
                   title={"Easy Mode"}
                   subtitle={"Reduce the number of cards to 11 pairs"}
                 />
-                <ListItem variant={"toggle"} title={"Dark Mode"} />
+                <ListItem variant={"darkToggle"} title={"Dark Mode"} />
                 <ListItem
                   variant={"link"}
                   title={"Contact"}

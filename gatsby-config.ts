@@ -24,6 +24,13 @@ const config: GatsbyConfig = {
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
     "gatsby-plugin-postcss",
+    "gatsby-plugin-dark-mode",
+    {
+      resolve: 'gatsby-plugin-use-dark-mode',
+      options: {
+        classNameDark: 'dark',
+      },
+    },
     // @to-do handle latter
     // https://www.gatsbyjs.com/plugins/gatsby-plugin-google-gtag/
     // "gatsby-plugin-google-gtag",

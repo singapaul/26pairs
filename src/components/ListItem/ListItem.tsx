@@ -1,8 +1,9 @@
 import React from "react";
 import { useState } from "react";
+import DarkModeToggle from "../DarkModeToggle";
 
 export type ListItemProps = {
-  variant: "toggle" | "link" | "stat";
+  variant: "toggle" | "link" | "stat" | "darkToggle";
   title: string;
   subtitle?: string;
   onToggle?: () => void;
@@ -59,8 +60,10 @@ const ListItem = ({
           <a href={link} target="_blank" rel="noopener noreferrer">
             {linkText}
           </a>
-        ) : (
+        ) : variant == "stat" ? (
           <p>{stat}</p>
+        ) : (
+          <DarkModeToggle />
         )}
       </div>
     </li>

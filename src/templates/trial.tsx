@@ -1,10 +1,24 @@
 import { HeadFC, graphql } from "gatsby";
 import React from "react";
 import Game from "../components/Game";
+import { useEffect } from "react";
+import useDarkMode from "use-dark-mode";
 
 // @ts-ignore
 const WordPage = ({ data }: any) => {
   const { contentfulDeck } = data;
+  const darkmode = useDarkMode(true);
+
+  useEffect(() => {
+    const root = window.document.documentElement;
+    if (darkmode.value == true) {
+      // root.classList.remove("light");
+      root.classList.add("dark");
+    } else {
+      root.classList.remove("dark");
+      // root.classList.add("light");
+    }
+  });
 
   return (
     <main>
