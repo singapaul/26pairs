@@ -2,27 +2,27 @@ import { HeadFC, graphql } from "gatsby";
 import React from "react";
 import Game from "../components/Game";
 import { useEffect } from "react";
-import useDarkMode from "use-dark-mode";
+// import useDarkMode from "use-dark-mode";
 
 // @ts-ignore
 const WordPage = ({ data }: any) => {
   const { contentfulDeck } = data;
-  const darkmode = useDarkMode(true);
+  // const darkmode = useDarkMode(true);
 
-  useEffect(() => {
+  // useEffect(() => {
     
-    const root = window.document.documentElement;
-    const docBody = window.document.body;
-    if (darkmode.value == true) {
-      // root.classList.remove("light");
-      root.classList.add("dark");
-      docBody.classList.add("dark")
-    } else if (darkmode.value == false) {
-      root.classList.remove("dark");
-      docBody.classList.remove("dark")
-      // root.classList.add("light");
-    }
-  });
+  //   const root = window.document.documentElement;
+  //   const docBody = window.document.body;
+  //   if (darkmode.value == true) {
+  //     // root.classList.remove("light");
+  //     root.classList.add("dark");
+  //     docBody.classList.add("dark")
+  //   } else if (darkmode.value == false) {
+  //     root.classList.remove("dark");
+  //     docBody.classList.remove("dark")
+  //     // root.classList.add("light");
+  //   }
+  // });
 
   return (
     <main>

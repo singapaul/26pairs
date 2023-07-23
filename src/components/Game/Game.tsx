@@ -8,6 +8,8 @@ import Layout from "../Layout";
 import TadaPopup from "../TadaPopup";
 // @ts-ignore
 import { shuffle } from "../../utils/shuffle";
+// @ts-ignore
+import useDarkMode from "use-dark-mode";
 
 export type GameProps = {
   version: "classic" | "lite";
@@ -16,6 +18,8 @@ export type GameProps = {
 };
 
 const Game = ({ version, deck, cardBack }: GameProps) => {
+  const darky = useDarkMode(undefined, { classNameDark: "dark" });
+
   const initValBestMoves = () => {
     if (typeof window !== "undefined") {
       // @ts-ignore
@@ -280,9 +284,8 @@ const Game = ({ version, deck, cardBack }: GameProps) => {
 
   return (
     <Layout>
-      <Header restart={handleRestart} variant="game">
-        <Timer moves={moves} minutes={minutes} seconds={seconds} />
-      </Header>
+      <Header restart={handleRestart} variant="game"></Header>
+      <button onClick={darky.toggle}>{darky.value ? "Dark": "Light"}</button>
       <Gameboard>
         {cards &&
           // @ts-ignore

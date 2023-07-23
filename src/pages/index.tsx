@@ -7,8 +7,7 @@ import { mainCardsLite } from "../data/Simpsonslite";
 const IndexPage: React.FC<PageProps> = () => {
   return (
     <main>
-      {/* <Game version="classic" deck={(mainCardsLite)} /> */}
-      {/* <p>dwe</p> */}
+      <Game version="classic" deck={(mainCardsLite)} cardBack={undefined} />
     </main>
   );
 };

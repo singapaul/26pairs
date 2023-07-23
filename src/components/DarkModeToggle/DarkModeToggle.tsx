@@ -2,7 +2,7 @@ import React, { useState } from "react";
 // @ts-ignore
 import useDarkSide from "./useDarkSide";
 // import useDarkMode from "use-dark-mode";
-import useDarkMode from "use-dark-mode";
+// import useDarkMode from "use-dark-mode";
 
 export type DarkModeToggleProps = {
   title?: any;
@@ -18,17 +18,17 @@ const DarkModeToggle = ({ title, buttonArray }: DarkModeToggleProps) => {
 
   // @ts-ignore
   const toggleDarkMode = () => {
-    // toggle();
-    darkmode.toggle();
-    console.log(darkmode.value);
+    console.log("darkmode.value");
   };
 
-  const darkmode = useDarkMode(true);
+  // const darkmode = useDarkMode(true);
 
   return (
     <div className="relative flex flex-col items-center justify-center overflow-hidden">
       <div className="flex">
-        <button className="border-2 border-black" onClick={toggleDarkMode}>Press me</button>
+        <button className="border-2 border-black" onClick={toggleDarkMode}>
+          Press me
+        </button>
         {/* <label className="inline-flex relative items-center cursor-pointer">
           <input
             type="checkbox"
