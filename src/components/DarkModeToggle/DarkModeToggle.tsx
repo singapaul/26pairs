@@ -1,8 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 // @ts-ignore
-import useDarkSide from "./useDarkSide";
-// import useDarkMode from "use-dark-mode";
-// import useDarkMode from "use-dark-mode";
+import useDarkMode from "use-dark-mode";
 
 export type DarkModeToggleProps = {
   title?: any;
@@ -10,38 +8,36 @@ export type DarkModeToggleProps = {
 };
 
 const DarkModeToggle = ({ title, buttonArray }: DarkModeToggleProps) => {
-  // const [colorTheme, setTheme] = useDarkSide();
-
-  // const [darkSide, setDarkSide] = useState(
-  //   colorTheme === "light" ? true : false
-  // );
-
   // @ts-ignore
-  const toggleDarkMode = () => {
-    console.log("darkmode.value");
-  };
+  const darkModeLogic = useDarkMode(undefined, { classNameDark: "dark" });
 
-  // const darkmode = useDarkMode(true);
+  // Remove the isChecked state since we can get the dark mode state from darky.value
+  // @ts-ignore
+  const checkHandler = (event) => {
+    event.preventDefault();
+    darkModeLogic.toggle(); // Call the toggle function to toggle dark mode
+  };
 
   return (
     <div className="relative flex flex-col items-center justify-center overflow-hidden">
       <div className="flex">
-        <button className="border-2 border-black" onClick={toggleDarkMode}>
-          Press me
-        </button>
-        {/* <label className="inline-flex relative items-center cursor-pointer">
+        <label
+          htmlFor="checkbox"
+          className="inline-flex relative items-center cursor-pointer"
+        >
           <input
+            id="checkbox"
             type="checkbox"
             className="sr-only peer"
-            checked={darkmode.value}
-            readOnly
-            // onChange={darkmode.toggle}
+            // onChange={checkHandler}
+            checked={darkModeLogic.value} // Use darky.value to determine the checked state
           />
+          {/* Updated slider styles for animation */}
           <div
-            onClick={toggleDarkMode}
+            onClick={checkHandler}
             className="w-11 h-6 bg-gray-200 rounded-full peer  peer-focus:ring-green-300  peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-600"
           ></div>
-        </label> */}
+        </label>
       </div>
     </div>
   );

@@ -285,7 +285,6 @@ const Game = ({ version, deck, cardBack }: GameProps) => {
   return (
     <Layout>
       <Header restart={handleRestart} variant="game"></Header>
-      <button onClick={darky.toggle}>{darky.value ? "Dark": "Light"}</button>
       <Gameboard>
         {cards &&
           // @ts-ignore
