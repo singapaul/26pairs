@@ -1,28 +1,12 @@
 import { HeadFC, graphql } from "gatsby";
 import React from "react";
+import { useState } from "react";
 import Game from "../components/Game";
-import { useEffect } from "react";
-// import useDarkMode from "use-dark-mode";
 
 // @ts-ignore
 const WordPage = ({ data }: any) => {
-  const { contentfulDeck } = data;
-  // const darkmode = useDarkMode(true);
-
-  // useEffect(() => {
-    
-  //   const root = window.document.documentElement;
-  //   const docBody = window.document.body;
-  //   if (darkmode.value == true) {
-  //     // root.classList.remove("light");
-  //     root.classList.add("dark");
-  //     docBody.classList.add("dark")
-  //   } else if (darkmode.value == false) {
-  //     root.classList.remove("dark");
-  //     docBody.classList.remove("dark")
-  //     // root.classList.add("light");
-  //   }
-  // });
+  // @ts-ignore
+  const { contentfulDeck, allContentfulDeck } = data;
 
   return (
     <main>
@@ -30,6 +14,7 @@ const WordPage = ({ data }: any) => {
         version={"classic"}
         deck={contentfulDeck.cards}
         cardBack={contentfulDeck.backImage.url}
+        deckLinks={allContentfulDeck}
       />
     </main>
   );
@@ -52,6 +37,14 @@ export const query = graphql`
         image {
           url
         }
+      }
+    }
+    allContentfulDeck {
+      nodes {
+        title
+        slug
+        contentful_id
+        category
       }
     }
   }

@@ -1,13 +1,20 @@
 import * as React from "react";
-import type { HeadFC, PageProps } from "gatsby";
+import { graphql, type HeadFC, type PageProps } from "gatsby";
 import Game from "../components/Game";
 // @ts-ignore
 import { mainCardsLite } from "../data/Simpsonslite";
 
-const IndexPage: React.FC<PageProps> = () => {
+const IndexPage: React.FC<PageProps> = ({ data }) => {
+  // @ts-ignore
+  const { allContentfulDeck } = data;
   return (
     <main>
-      <Game version="classic" deck={(mainCardsLite)} cardBack={undefined} />
+      <Game
+        deckLinks={allContentfulDeck}
+        version="classic"
+        deck={mainCardsLite}
+        cardBack={undefined}
+      />
     </main>
   );
 };
@@ -15,3 +22,16 @@ const IndexPage: React.FC<PageProps> = () => {
 export default IndexPage;
 
 export const Head: HeadFC = () => <title>26 Pairs</title>;
+
+export const query = graphql`
+  query thisCouldBeAnyText {
+    allContentfulDeck {
+      nodes {
+        title
+        slug
+        contentful_id
+        category
+      }
+    }
+  }
+`;

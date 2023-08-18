@@ -15,9 +15,10 @@ export type GameProps = {
   version: "classic" | "lite";
   deck: any;
   cardBack: any;
+  deckLinks: any;
 };
 
-const Game = ({ version, deck, cardBack }: GameProps) => {
+const Game = ({ version, deck, cardBack, deckLinks }: GameProps) => {
   const darky = useDarkMode(undefined, { classNameDark: "dark" });
 
   const initValBestMoves = () => {
@@ -284,7 +285,11 @@ const Game = ({ version, deck, cardBack }: GameProps) => {
 
   return (
     <Layout>
-      <Header restart={handleRestart} variant="game"></Header>
+      <Header
+        deckLinks={deckLinks}
+        restart={handleRestart}
+        variant="game"
+      ></Header>
       <Gameboard>
         {cards &&
           // @ts-ignore

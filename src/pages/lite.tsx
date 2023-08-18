@@ -13,7 +13,7 @@ const pageStyles = {
 const IndexPage: React.FC<PageProps> = () => {
   return (
     <main style={pageStyles}>
-      <Game version="lite" />
+      <Game version="lite" deck={undefined} cardBack={undefined} />
     </main>
   );
 };

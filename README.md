@@ -1,5 +1,10 @@
 # 26Pairs Development notes
 
+### Quickstart guide
+
+- yarn build
+- yarn start
+
 ## 12th July Goals
 
 1. Settings Menu and functionality (get theme from CMS)
@@ -7,6 +12,11 @@
 ## To do list
 
 - setup environment variables for the CMS.
+- slide in menu for switching decks
+- theming
+- Easy mode
+- enable caching lol
+
 - integrate classNames to abstract out the colors and font classes
 - Dark Mode
 - Switch between decks
