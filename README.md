@@ -7,7 +7,6 @@
 
 ## To do
 
-- MAJOR - PWA Status
 - MINOR Theming switch due to accordian menu?
 - Update local storage hook for classic/lite version
 - Contentful add keys to environment
@@ -54,6 +53,7 @@ https://www.gatsbyjs.com/docs/progressive-web-app/
 
 - Side menu updated
 - Accordian implemented
+- MAJOR - PWA Status - done
 
 13/07
 

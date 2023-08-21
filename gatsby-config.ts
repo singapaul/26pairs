@@ -81,8 +81,7 @@ const config: GatsbyConfig = {
           {
             name: "Home",
             file: "https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200",
-          },
-          "gatsby-plugin-offline",
+          }
         ],
       },
     },
@@ -98,6 +97,7 @@ const config: GatsbyConfig = {
         icon: `src/assets/images/restart.png`
       },
     },
+    "gatsby-plugin-offline",
   ],
 };
 
