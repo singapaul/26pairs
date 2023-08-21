@@ -10,6 +10,7 @@
 - MAJOR - PWA Status
 - MINOR Theming switch due to accordian menu?
 - Update local storage hook for classic/lite version
+- Contentful add keys to environment
 
 ## 12th July Goals
 
