@@ -10,6 +10,7 @@ exports.createPages = async ({ graphql, actions }) => {
           title
           slug
           contentful_id
+          version
         }
       }
     }
@@ -17,12 +18,12 @@ exports.createPages = async ({ graphql, actions }) => {
   const decks = data.data.allContentfulDeck.nodes;
   const productTemplate = path.resolve("./src/templates/trial.tsx");
   // @ts-ignore
-  decks.forEach((word) => {
+  decks.forEach((deck) => {
     createPage({
-      path: word.slug,
+      path: `${deck.slug}/${deck.version}`,
       component: productTemplate,
       context: {
-        id: word.contentful_id,
+        id: deck.contentful_id,
       },
     });
   });

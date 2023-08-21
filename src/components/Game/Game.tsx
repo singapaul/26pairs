@@ -127,7 +127,7 @@ const Game = ({ version, deck, cardBack, deckLinks }: GameProps) => {
       setIsPause(true);
       completedGamePrompt();
       // @ts-ignore
-      // setBestScore(highScore);
+      setBestScore(highScore);
       // ts-ignore
       if (typeof window !== "undefined") {
         // Log the score from the current game
@@ -280,16 +280,12 @@ const Game = ({ version, deck, cardBack, deckLinks }: GameProps) => {
   const minutes = Math.floor((time % 360000) / 6000);
   // Seconds calculation
   const seconds = Math.floor((time % 6000) / 100);
-  // Milliseconds calculation
-  const milliseconds = time % 100;
 
   return (
     <Layout>
-      <Header
-        deckLinks={deckLinks}
-        restart={handleRestart}
-        variant="game"
-      ></Header>
+      <Header deckLinks={deckLinks} restart={handleRestart} variant="game">
+        <Timer moves={moves} minutes={minutes} seconds={seconds} />
+      </Header>
       <Gameboard>
         {cards &&
           // @ts-ignore

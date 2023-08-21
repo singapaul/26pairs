@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 
 export type TimerProps = {
-  moves?: number;
-  minutes?: any;
-  seconds?: any;
+  moves: number;
+  minutes: any;
+  seconds: any;
 };
 
 const Timer = ({ moves = 0, minutes, seconds }: TimerProps) => {
@@ -13,11 +13,12 @@ const Timer = ({ moves = 0, minutes, seconds }: TimerProps) => {
         <h2>Moves</h2>
         <p>{moves}</p>
       </div>
-      <div className="flex flex-col items-end w-12">
+      <div className="flex flex-col items-end w-30">
         <h2>Time</h2>
         <p className="">
           {minutes.toString().padStart(2, "0")}:
           {seconds.toString().padStart(2, "0")}
+          {/* {minutes}:{seconds} */}
         </p>
       </div>
     </div>

@@ -36,11 +36,6 @@ const SettingsPopup = ({ show, onClose }: SettingsPopupProps) => {
             {/* The menu */}
             <PopupContent title={"Settings"} onClose={toggleMenu}>
               <ul className="">
-                <ListItem
-                  variant={"toggle"}
-                  title={"Easy Mode"}
-                  subtitle={"Reduce the number of cards to 11 pairs"}
-                />
                 <ListItem variant={"darkToggle"} title={"Dark Mode"} />
                 <ListItem
                   variant={"link"}

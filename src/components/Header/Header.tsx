@@ -4,6 +4,7 @@ import AboutPopup from "../AboutPopup";
 import SettingsPopup from "../SettingsPopup";
 import StatsPopup from "../StatsPopup";
 import Sidemenu from "../Sidemenu/Sidemenu";
+import { AiOutlineMenu } from "react-icons/ai";
 
 export type HeaderProps = {
   children?: ReactNode;
@@ -24,8 +25,9 @@ const Header = ({ children, deckLinks }: HeaderProps) => {
   return (
     <header className="w-full border-b-2 border-white flex justify-between">
       <div className="flex items-center">
-        <p className="text-xl">26Pairs</p>
-        <button onClick={buttonHandler}>Open</button>
+        <button className="text-4xl p-2" onClick={buttonHandler}>
+          <AiOutlineMenu />
+        </button>
       </div>
       <Sidemenu
         deckLinks={deckLinks}
@@ -38,7 +40,6 @@ const Header = ({ children, deckLinks }: HeaderProps) => {
         <StatsPopup />
         <SettingsPopup />
       </div>
-      {/* </nav> */}
     </header>
   );
 };

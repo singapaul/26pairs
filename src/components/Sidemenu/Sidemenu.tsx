@@ -1,5 +1,6 @@
 import React, { ReactNode } from "react";
 import Accordian from "../Accordian/Accordian";
+import { AiOutlineCloseSquare } from "react-icons/ai";
 
 export type SidemenuProps = {
   children?: ReactNode;
@@ -7,22 +8,21 @@ export type SidemenuProps = {
   onClickHandler?: () => void;
   deckLinks: any;
 };
-function Sidemenu({
-  children,
-  onClickHandler,
-  showSidebar,
-  deckLinks,
-}: SidemenuProps) {
-  console.log("sidemenu");
-
+function Sidemenu({ onClickHandler, showSidebar, deckLinks }: SidemenuProps) {
   return (
     <div
-      className={`top-0 left-0 w-[80vw] sm:w-[35vw] bg-gray-500 p-10 pr-20 text-white fixed h-full z-40 ease-in-out duration-300 ${
+      className={`flex flex-col top-0 left-0 w-[80vw] sm:w-[35vw] bg-gray-500 p-10 pr-20 text-white fixed h-full z-40 ease-in-out duration-300 ${
         showSidebar ? "translate-x-0 " : "-translate-x-full"
       }`}
     >
+      <button
+        onClick={onClickHandler}
+        className="self-end pointer hover:text-red-500"
+        style={{ fontSize: "30px" }}
+      >
+        <AiOutlineCloseSquare />
+      </button>
       <Accordian deckLinks={deckLinks} />
-      <button onClick={onClickHandler}>Press Me </button>
     </div>
   );
 }

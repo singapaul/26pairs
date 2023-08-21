@@ -5,6 +5,12 @@
 - yarn build
 - yarn start
 
+## To do
+
+- MAJOR - PWA Status
+- MINOR Theming switch due to accordian menu?
+- Update local storage hook for classic/lite version
+
 ## 12th July Goals
 
 1. Settings Menu and functionality (get theme from CMS)
@@ -42,6 +48,11 @@ https://www.gatsbyjs.com/docs/progressive-web-app/
 - Google fonts/icons integration (see wordy)
 
 ## Done
+
+21/08
+
+- Side menu updated
+- Accordian implemented
 
 13/07
 
