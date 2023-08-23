@@ -9,7 +9,6 @@ import TadaPopup from "../TadaPopup";
 // @ts-ignore
 import { shuffle } from "../../utils/shuffle";
 // @ts-ignore
-import useDarkMode from "use-dark-mode";
 
 export type GameProps = {
   version: "classic" | "lite";
@@ -19,7 +18,7 @@ export type GameProps = {
 };
 
 const Game = ({ version, deck, cardBack, deckLinks }: GameProps) => {
-  const darky = useDarkMode(undefined, { classNameDark: "dark" });
+  // const darky = useDarkMode(undefined, { classNameDark: "dark" });
 
   const initValBestMoves = () => {
     if (typeof window !== "undefined") {

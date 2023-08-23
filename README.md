@@ -7,8 +7,9 @@
 
 ## To do
 
-- MINOR Theming switch due to accordian menu?
+- MINOR Theming switch due to accordian menu?- removed dark mode.
 - Update local storage hook for classic/lite version
+- refactor game code
 - Contentful add keys to environment
 
 ## 12th July Goals
