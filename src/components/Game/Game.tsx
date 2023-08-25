@@ -41,10 +41,7 @@ const Game = ({ version, deck, cardBack, deckLinks }: GameProps) => {
   };
 
   useEffect(() => {
-    if (version === "classic") {
-      setCards(shuffle(deck.concat(deck)));
-    } else if (version === "lite") {
-      // update later
+    if (deck.length > 0) {
       setCards(shuffle(deck.concat(deck)));
     }
   }, [deck]);
@@ -62,7 +59,7 @@ const Game = ({ version, deck, cardBack, deckLinks }: GameProps) => {
     // return fda.length;
   };
 
-  const [cards, setCards] = useState();
+  const [cards, setCards] = useState([]);
   const [openCards, setOpenCards] = useState([]);
   const [clearedCards, setClearedCards] = useState({});
   const [shouldDisableAllCards, setShouldDisableAllCards] = useState(false);
@@ -289,6 +286,7 @@ const Game = ({ version, deck, cardBack, deckLinks }: GameProps) => {
         {cards &&
           // @ts-ignore
           cards.map((card: any, index: any) => {
+            console.log(card);
             return (
               <Card
                 key={index}
